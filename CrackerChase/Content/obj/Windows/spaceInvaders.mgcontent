@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>C:/Users/Hakaru/Documents/spaceInvaders/CrackerChaseLab/CrackerChase/Content/spaceInvaders.mp3</SourceFile>
+  <SourceTime>2021-02-08T12:06:10.4086236+00:00</SourceTime>
+  <DestFile>C:/Users/Hakaru/Documents/spaceInvaders/CrackerChaseLab/CrackerChase/Content/bin/Windows/spaceInvaders.xnb</DestFile>
+  <DestTime>2021-02-08T12:17:47.6894755+00:00</DestTime>
+  <Importer>Mp3Importer</Importer>
+  <ImporterTime>2017-03-01T15:05:36+00:00</ImporterTime>
+  <Processor>SongProcessor</Processor>
+  <ProcessorTime>2017-03-01T15:05:36+00:00</ProcessorTime>
+  <Parameters>
+    <Key>Quality</Key>
+    <Value>Best</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput>
+    <string>C:/Users/Hakaru/Documents/spaceInvaders/CrackerChaseLab/CrackerChase/Content/bin/Windows/spaceInvaders.wma</string>
+  </BuildOutput>
+</PipelineBuildEvent>

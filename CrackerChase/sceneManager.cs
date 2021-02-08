@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using System.Linq;
 using System.Security.Permissions;
 using System.Text;
@@ -7,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace CrackerChase
 {
-    class sceneManager
+    class SceneManager
     {
         //methods:
         //constructor
-        public sceneManager()
+        public SceneManager()
         {
             //init the scenes
             mScenes = new List<gameScene>();
@@ -20,9 +21,10 @@ namespace CrackerChase
 
 
         //manages interaction of scenes (changing, adding, removing etc):
-        public void addScene()//should take in a scene to add to the list
+        public int addScene(gameScene scene)//should take in a scene to add to the list, returns the id of the new scene
         {
-            //todo implement creation of a scene
+            mScenes.Add(scene);
+            return mScenes.Count - 1;
         }
         public int getCurrentSceneID()//returns the index of the scene
         {
@@ -45,9 +47,9 @@ namespace CrackerChase
 
 
         //manages updates, draws etc
-        public void update()
+        public void update(GameTime gameTime)
         {
-            mScenes[mCurrentScene].update();
+            mScenes[mCurrentScene].update(gameTime);
         }
         public void draw()
         {
