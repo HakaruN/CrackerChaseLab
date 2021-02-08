@@ -22,15 +22,15 @@ namespace CrackerChase
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(GameTime gametime)
         {
             //call draw method on the player
-            mPlayer.Draw(spriteBatch);
+            mPlayer.Draw(gametime);
             
             //call draw on the aliens
             for(int i = 0; i < mEnemies.Count(); i++)
             {
-                mEnemies[i].Draw(spriteBatch);
+                mEnemies[i].Draw(gametime);
             }
         }
 
