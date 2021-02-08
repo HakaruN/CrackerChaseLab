@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<<<<<<< HEAD
+  <SourceFile>C:/Users/Itchy/Desktop/Space Invader/CrackerChase/Content/cheese.png</SourceFile>
+  <SourceTime>2021-02-08T10:30:10.1137423+00:00</SourceTime>
+  <DestFile>C:/Users/Itchy/Desktop/Space Invader/CrackerChase/Content/bin/Windows/cheese.xnb</DestFile>
+  <DestTime>2021-02-08T12:19:00.7247772+00:00</DestTime>
+=======
   <SourceFile>C:/Users/Hakaru/Documents/spaceInvaders/CrackerChaseLab/CrackerChase/Content/cheese.png</SourceFile>
   <SourceTime>2021-02-08T12:06:10.3936307+00:00</SourceTime>
   <DestFile>C:/Users/Hakaru/Documents/spaceInvaders/CrackerChaseLab/CrackerChase/Content/bin/Windows/cheese.xnb</DestFile>
   <DestTime>2021-02-08T12:17:46.1347648+00:00</DestTime>
+>>>>>>> 0d400af6512df2a310c94ec512659cde58ba31be
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T15:05:36+00:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
