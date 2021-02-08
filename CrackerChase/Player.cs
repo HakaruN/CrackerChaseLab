@@ -72,9 +72,9 @@ namespace CrackerChase
                 mainPlayer.StopMovingRight();
             }
 
-            if(keys.IsKeyDown(Keys.Space))
+            if(keys.IsKeyDown(Keys.Space) && !bHasFired)
             {
-
+                Fire();
             }
 
             foreach (Sprite s in gameSprites)
@@ -87,9 +87,9 @@ namespace CrackerChase
 
         void Fire()
         {
-
+            bHasFired = true;
         }
-        protected override void Draw(GameTime gameTime)
+        public new void Draw(GameTime gameTime)
         {
 
             spriteBatch.Begin();
