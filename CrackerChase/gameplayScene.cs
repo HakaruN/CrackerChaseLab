@@ -10,33 +10,33 @@ namespace CrackerChase
 {
     class gameplayScene : gameScene
     {
-        public void update(GameTime gametime)
+        public void Update(GameTime gametime)
         {
             //call update method on the player
-            mPlayer.update(gametime);
+            mPlayer.Update(gametime);
 
             //call update method on the aliens
-            for(int i = 0; i < mAliens.Count(); i++)
+            for(int i = 0; i < mEnemies.Count(); i++)
             {
-                mAliens[i].update(gametime);
+                mEnemies[i].Update(gametime);
             }
         }
 
-        public void draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
             //call draw method on the player
-            mPlayer.draw(spriteBatch);
+            mPlayer.Draw(spriteBatch);
             
             //call draw on the aliens
-            for(int i = 0; i < mAliens.Count(); i++)
+            for(int i = 0; i < mEnemies.Count(); i++)
             {
-                mAliens[i].draw(spriteBatch);
+                mEnemies[i].Draw(spriteBatch);
             }
         }
 
         int gameScore;
         Player mPlayer;//player
-        List<Alien> mAliens;//list of the aliens
+        List<Enemy> mEnemies;//list of the aliens
         
         //todo: add list of aliens, player object
     }

@@ -48,13 +48,13 @@ namespace CrackerChase
 
 
         //manages updates, draws etc
-        public void update(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
-            mScenes[mCurrentScene].update(gameTime);
+            mScenes[mCurrentScene].Update(gameTime);
         }
-        public void draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            mScenes[mCurrentScene].draw(spriteBatch);
+            mScenes[mCurrentScene].Draw(spriteBatch);
         }
 
 
