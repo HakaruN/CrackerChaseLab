@@ -15,7 +15,7 @@ namespace CrackerChase
 
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(GameTime gametime)
         {
             //rectangle.X = (int)Math.Round(xPosition);
             //rectangle.Y = (int)Math.Round(yPosition);

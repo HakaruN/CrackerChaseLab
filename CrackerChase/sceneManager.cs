@@ -52,9 +52,9 @@ namespace CrackerChase
         {
             mScenes[mCurrentScene].Update(gameTime);
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(GameTime gametime)
         {
-            mScenes[mCurrentScene].Draw(spriteBatch);
+            mScenes[mCurrentScene].Draw(gametime);
         }
 
 

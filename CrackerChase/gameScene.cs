@@ -11,6 +11,6 @@ namespace CrackerChase
     interface gameScene//an interface that ensures all games scenes will have an update and draw method
     {
         void Update(GameTime gametime);
-        void Draw(SpriteBatch spriteBatch);
+        void Draw(GameTime gametime);
     }
 }
