@@ -91,7 +91,6 @@ namespace CrackerChase
         }
         public new void Draw(GameTime gameTime)
         {
-
             spriteBatch.Begin();
 
             foreach (Sprite s in gameSprites)
@@ -105,7 +104,6 @@ namespace CrackerChase
             spriteBatch.DrawString(messageFont, messageString, statusPos, Color.Red);
 
             spriteBatch.End();
-
 
             base.Draw(gameTime);
         }
