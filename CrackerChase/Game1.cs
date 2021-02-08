@@ -151,7 +151,7 @@ namespace CrackerChase
         protected override void Update(GameTime gameTime)
         {
             //passes an update call to the scene manager
-            sceneManager.update(gameTime);
+            sceneManager.Update(gameTime);
 
             /*
             KeyboardState keys = Keyboard.GetState();
@@ -243,7 +243,7 @@ namespace CrackerChase
         protected override void Draw(GameTime gameTime)
         {
             //passes a draw call to the scene manager
-            sceneManager.draw(spriteBatch);
+            sceneManager.Draw(spriteBatch);
 
             spriteBatch.Begin();
 
