@@ -248,7 +248,7 @@ namespace CrackerChase
         protected override void Draw(GameTime gameTime)
         {
             //passes a draw call to the scene manager
-            sceneManager.draw();
+            sceneManager.draw(spriteBatch);
 
             spriteBatch.Begin();
 

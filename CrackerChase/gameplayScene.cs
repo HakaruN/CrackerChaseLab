@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Graphics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,15 +22,15 @@ namespace CrackerChase
             }
         }
 
-        public void draw()
+        public void draw(SpriteBatch spriteBatch)
         {
             //call draw method on the player
-            mPlayer.draw();
+            mPlayer.draw(spriteBatch);
             
             //call draw on the aliens
             for(int i = 0; i < mAliens.Count(); i++)
             {
-                mAliens[i].draw();
+                mAliens[i].draw(spriteBatch);
             }
         }
 

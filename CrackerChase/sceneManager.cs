@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System.Linq;
 using System.Security.Permissions;
 using System.Text;
@@ -51,9 +52,9 @@ namespace CrackerChase
         {
             mScenes[mCurrentScene].update(gameTime);
         }
-        public void draw()
+        public void draw(SpriteBatch spriteBatch)
         {
-            mScenes[mCurrentScene].draw();
+            mScenes[mCurrentScene].draw(spriteBatch);
         }
 
 
