@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,18 +9,34 @@ namespace CrackerChase
 {
     class gameplayScene : gameScene
     {
-        
-        public void update()
+        public void update(GameTime gametime)
         {
+            //call update method on the player
+            mPlayer.update(gametime);
 
+            //call update method on the aliens
+            for(int i = 0; i < mAliens.Count(); i++)
+            {
+                mAliens[i].update(gametime);
+            }
         }
 
         public void draw()
         {
-
+            //call draw method on the player
+            mPlayer.draw();
+            
+            //call draw on the aliens
+            for(int i = 0; i < mAliens.Count(); i++)
+            {
+                mAliens[i].draw();
+            }
         }
+
+        int gameScore;
+        Player mPlayer;//player
+        List<Alien> mAliens;//list of the aliens
         
-        //TODO add: player lives, score
-        //list of aliens, player object
+        //todo: add list of aliens, player object
     }
 }

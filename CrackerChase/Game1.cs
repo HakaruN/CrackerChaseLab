@@ -20,7 +20,8 @@ namespace CrackerChase
 
         // Game World
         // These variables define the world 
-
+        //scene manager
+        SceneManager sceneManager;
         Mover cheese;
         Target cracker;
         Sprite background;
@@ -64,8 +65,16 @@ namespace CrackerChase
       
         public Game1()
         {
+            //init the scene manager
+            sceneManager = new SceneManager();
+            //init graphics
             graphics = new GraphicsDeviceManager(this);
+            //init content
             Content.RootDirectory = "Content";
+
+            //just for now add a game scene
+            gameplayScene gameTestScene = new gameplayScene();
+            sceneManager.addScene(gameTestScene);
         }
 
         /// <summary>
@@ -76,6 +85,7 @@ namespace CrackerChase
         /// </summary>
         protected override void Initialize()
         {
+            
             base.Initialize();
         }
 
@@ -140,8 +150,12 @@ namespace CrackerChase
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            KeyboardState keys = Keyboard.GetState();
+            //passes an update call to the scene manager
+            sceneManager.update(gameTime);
 
+            /*
+            KeyboardState keys = Keyboard.GetState();
+            
             if (playing)
             {
 
@@ -214,12 +228,13 @@ namespace CrackerChase
                     Exit();
                 }
             }
-
+            
             base.Update(gameTime);
+            */
         }
 
-        
-        
+
+
 
         /// <summary>
         /// This is called when the game should draw itself.
@@ -227,6 +242,8 @@ namespace CrackerChase
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            //passes a draw call to the scene manager
+            sceneManager.draw();
 
             spriteBatch.Begin();
 

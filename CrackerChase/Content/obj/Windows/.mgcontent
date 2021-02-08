@@ -4,6 +4,7 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
+<<<<<<< HEAD
     <File>C:/Users/Itchy/Desktop/Space Invader/CrackerChase/Content/beep1.wav</File>
     <File>C:/Users/Itchy/Desktop/Space Invader/CrackerChase/Content/beep2.wav</File>
     <File>C:/Users/Itchy/Desktop/Space Invader/CrackerChase/Content/Burp.wav</File>
@@ -14,5 +15,17 @@
     <File>C:/Users/Itchy/Desktop/Space Invader/CrackerChase/Content/MessageFont.spritefont</File>
     <File>C:/Users/Itchy/Desktop/Space Invader/CrackerChase/Content/spaceInvaders.mp3</File>
     <File>C:/Users/Itchy/Desktop/Space Invader/CrackerChase/Content/Tablecloth.png</File>
+=======
+    <File>C:/Users/Hakaru/Documents/spaceInvaders/CrackerChaseLab/CrackerChase/Content/beep1.wav</File>
+    <File>C:/Users/Hakaru/Documents/spaceInvaders/CrackerChaseLab/CrackerChase/Content/beep2.wav</File>
+    <File>C:/Users/Hakaru/Documents/spaceInvaders/CrackerChaseLab/CrackerChase/Content/Burp.wav</File>
+    <File>C:/Users/Hakaru/Documents/spaceInvaders/CrackerChaseLab/CrackerChase/Content/cheese.png</File>
+    <File>C:/Users/Hakaru/Documents/spaceInvaders/CrackerChaseLab/CrackerChase/Content/cracker.png</File>
+    <File>C:/Users/Hakaru/Documents/spaceInvaders/CrackerChaseLab/CrackerChase/Content/explosion.wav</File>
+    <File>C:/Users/Hakaru/Documents/spaceInvaders/CrackerChaseLab/CrackerChase/Content/laser.wav</File>
+    <File>C:/Users/Hakaru/Documents/spaceInvaders/CrackerChaseLab/CrackerChase/Content/MessageFont.spritefont</File>
+    <File>C:/Users/Hakaru/Documents/spaceInvaders/CrackerChaseLab/CrackerChase/Content/spaceInvaders.mp3</File>
+    <File>C:/Users/Hakaru/Documents/spaceInvaders/CrackerChaseLab/CrackerChase/Content/Tablecloth.png</File>
+>>>>>>> 0d400af6512df2a310c94ec512659cde58ba31be
   </SourceFiles>
 </SourceFileCollection>
