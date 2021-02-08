@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Audio;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.Xna.Framework.Media;
 
 namespace CrackerChase
 {
@@ -96,6 +97,10 @@ namespace CrackerChase
             Texture2D cheeseTexture = Content.Load<Texture2D>("cheese");
             Texture2D cloth = Content.Load<Texture2D>("Tablecloth");
             Texture2D crackerTexture = Content.Load<Texture2D>("cracker");
+
+            Song backgroundMusic = Content.Load<Song>("spaceInvaders");
+            MediaPlayer.Play(backgroundMusic);
+            MediaPlayer.IsRepeating = true;
 
             BurpSound = Content.Load<SoundEffect>("Burp");
 
