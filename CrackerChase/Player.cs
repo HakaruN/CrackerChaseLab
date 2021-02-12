@@ -25,11 +25,11 @@ namespace CrackerChase
             mBullet = new Mover(inScreenWidth, inScreenHeight, bulletTexture, inDrawWidth, -10, -10, 0, 100);
         }
 
-        public Player(Mover playerMover, int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, Texture2D bulletTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) : base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
+        public Player(Mover playerMover, int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, Texture2D bulletTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed,SoundManager sound) : base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
         {
             //init the bullet
             mBullet = new Mover(inScreenWidth, inScreenHeight, bulletTexture, inDrawWidth, -10, -10, 0, 100);
-
+            soundManager = sound;
             mMover = playerMover;
         }
 
@@ -141,6 +141,7 @@ namespace CrackerChase
             //bHasFired = true;
 
             mBullet.SetPosition(mMover.GetPos().X, mMover.GetPos().Y);
+            soundManager.playGun();
             //Console.WriteLine("firing gun");
             //mBullet.StartMovingUp();
 
