@@ -12,6 +12,9 @@ namespace CrackerChase
 
     class Barricade : Mover
     {
+        bool bIsGone = false;
+        public int barricadeHealth = 5;
+
         //members
         Mover mMover;//the mover that represents the player
 
@@ -27,7 +30,10 @@ namespace CrackerChase
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            mMover.Draw(spriteBatch);
+            if (!bIsGone)
+            {
+                mMover.Draw(spriteBatch);
+            }
         }
 
         //add a sprite to the sprite list
@@ -38,7 +44,10 @@ namespace CrackerChase
 
         public void Update(GameTime gameTime)
         {
-
+            if(barricadeHealth <= 0)
+            {
+                bIsGone = true;
+            }
         }
 
 
