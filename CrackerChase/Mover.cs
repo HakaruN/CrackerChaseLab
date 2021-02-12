@@ -46,6 +46,13 @@ namespace CrackerChase
             MovingRight = false;
         }
 
+        public Vector2 GetPos()
+        {
+            Vector2 position = new Vector2(xPosition,yPosition);
+
+            return position;
+        }
+
 
         protected bool MovingUp;
         protected bool MovingDown;
