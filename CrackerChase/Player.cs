@@ -20,13 +20,13 @@ namespace CrackerChase
         public Player(int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, Texture2D bulletTexture, int inDrawWidth,  float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) : base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
         {
             //init the bullet
-            mBullet = new Mover(inScreenWidth, inScreenHeight, bulletTexture, inDrawWidth, -10, -10, 0, 0);
+            mBullet = new Mover(inScreenWidth, inScreenHeight, bulletTexture, inDrawWidth, -10, -10, 0, 60);
         }
 
         public Player(Mover playerMover, int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, Texture2D bulletTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) : base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
         {
             //init the bullet
-            mBullet = new Mover(inScreenWidth, inScreenHeight, bulletTexture, inDrawWidth, -10, -10, 0, 0);
+            mBullet = new Mover(inScreenWidth, inScreenHeight, bulletTexture, inDrawWidth, -10, -10, 0, 60);
 
             mMover = playerMover;
         }
@@ -83,23 +83,23 @@ namespace CrackerChase
 
             //call the update function for the mover object
             mMover.Update(1.0f / 60f);
-
+            mBullet.Update(1.0f / 60f);
 
 
             //update the bullet
-            Console.WriteLine("xpos: {0}, ypos: {1}", mBullet.GetPos().X, mBullet.GetPos().Y);
+            //Console.WriteLine("xpos: {0}, ypos: {1}", mBullet.GetPos().X, mBullet.GetPos().Y);
             if (isBulletOnscreen(inScreenWidth, inScreenHeight))
             {
                 //if the bullet is onscreen then move the bullet up
                 mBullet.StartMovingUp();
                 bHasFired = true;
-                Console.WriteLine("Bullet onscreen");
+                //Console.WriteLine("Bullet onscreen");
             }
             else
             {
                 //set has fired to false so we can fire again
                 bHasFired = false;
-                Console.WriteLine("Bullet offscreen");
+                //Console.WriteLine("Bullet offscreen");
             }
 
 
@@ -109,7 +109,8 @@ namespace CrackerChase
         public override void Draw(SpriteBatch spriteBatch)
         {
             //spriteBatch.Begin();
-            mMover.Draw(spriteBatch);            
+            mMover.Draw(spriteBatch);
+            mBullet.Draw(spriteBatch);
             //spriteBatch.End();
         }
 
@@ -124,6 +125,7 @@ namespace CrackerChase
             //bHasFired = true;
 
             mBullet.SetPosition(mMover.GetPos().X, mMover.GetPos().Y);
+            //Console.WriteLine("firing gun");
             //mBullet.StartMovingUp();
 
             //fire the bullet
