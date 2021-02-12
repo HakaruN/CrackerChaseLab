@@ -83,10 +83,14 @@ namespace CrackerChase
         /*
         class Player : Game
         {
+<<<<<<< HEAD
             GraphicsDeviceManager graphics;
             SpriteBatch spriteBatch;
 
             List<Sprite> gameSprites = new List<Sprite>();
+=======
+            spriteBatch.Begin();
+>>>>>>> master
 
             SpriteFont messageFont;
 
@@ -116,10 +120,16 @@ namespace CrackerChase
                 Texture2D mainPlayerTexture = Content.Load<Texture2D>("mainPlayer");
                 gameSprites.Add(mainPlayer);
 
+<<<<<<< HEAD
                 int mainPlayerWidth = screenWidth / 15;
 
                 mainPlayer = new Mover(screenWidth, screenHeight, mainPlayerTexture, mainPlayerWidth, screenWidth / 2, screenHeight / 2, 500, 500);
             }
+=======
+            base.Draw(gameTime);
+        }
+    }
+>>>>>>> master
 
             public new void Update(GameTime gameTime)
             {
