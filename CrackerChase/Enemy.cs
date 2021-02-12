@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Text;
 namespace CrackerChase
 {
-    class Enemy
+    class Enemy : Mover
     {
         //members
         Mover mMover;//the mover that represents the player        
