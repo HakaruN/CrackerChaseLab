@@ -155,6 +155,7 @@ namespace CrackerChase
             mPlayer = new Player(
                 new Mover(screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500),
                 screenWidth, screenHeight, spaceShipTex, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500,soundManager);
+<<<<<<< HEAD
 
             int numEnemyRows = 5, numEnemiyCols = 5;
             int enemyPosX = 0, enemyPosY = 0;
@@ -168,6 +169,11 @@ namespace CrackerChase
                     screenWidth, screenHeight, spaceShipTex, spaceshipWidth, i * (enemyPosX + enemySpacingX), j * (enemyPosY + enemySpacingY) + 25, 500, 500));
                 }
             }
+=======
+            mEnemies.Add(new Enemy(new Mover
+                (screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500),
+                screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500,soundManager));
+>>>>>>> f802a8a844b2a522ff9dc187deb006f15918d21b
 
             mBarricade.Add(new Barricade(new Mover(screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 4, screenHeight - 20, 500, 500),
                 screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500));

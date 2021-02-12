@@ -31,16 +31,19 @@ namespace CrackerChase
 
         public void playGun()
         {
-            fireGun.CreateInstance();
+           fireGun.CreateInstance().Play();
+           fireGun.CreateInstance().Stop();
         }
 
         public void playBackground()
         {
-                   }
+                 
+        }
 
         public void enemyCol()
         {
-            enemyColision.CreateInstance();
+            enemyColision.CreateInstance().Play();
+            enemyColision.CreateInstance().Stop();
         }
 
 
