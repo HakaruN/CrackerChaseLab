@@ -20,31 +20,38 @@ namespace CrackerChase
 
         // Game World
         // These variables define the world 
-        //scene manager
-        SceneManager sceneManager;
-        Mover cheese;
-        Target cracker;
-        Sprite background;
-        SoundEffect BurpSound;
-
         int screenWidth;
         int screenHeight;
 
-        List<Sprite> gameSprites = new List<Sprite>();
-        List<Target> crackers = new List<Target>();
+        //scene manager
+        SceneManager mSceneManager;
+        //player
+        Player mPlayer;
 
-        SpriteFont messageFont;
+        //legacy crap
+        //Mover cheese;
+        //Target cracker;
+        //Sprite background;
+        //SoundEffect BurpSound;
 
-        string messageString = "Hello world";
 
-        int score;
-        int timer;
 
-        bool playing;
+        //List<Sprite> gameSprites = new List<Sprite>();
+        //List<Target> crackers = new List<Target>();
+
+        //SpriteFont messageFont;
+
+        //string messageString = "Hello world";
+
+        //int score;
+        //int timer;
+
+        //bool playing;
 
 
         void startPlayingGame()
         {
+            /*
             foreach (Sprite s in gameSprites)
             {
                 s.Reset();
@@ -54,11 +61,18 @@ namespace CrackerChase
                 t.Reset();
             }
             messageString = "Cracker Chase";
-
+            
             playing = true;
             timer = 600;
             score = 0;
+            */
 
+            bool isRunning = false;
+            GameTime gameTime1 = new GameTime();
+            while (isRunning)
+            {
+                this.Update(gameTime1);
+            }
            
         }
 
@@ -66,15 +80,12 @@ namespace CrackerChase
         public Game1()
         {
             //init the scene manager
-            sceneManager = new SceneManager();
+            mSceneManager = new SceneManager();
             //init graphics
             graphics = new GraphicsDeviceManager(this);
             //init content
             Content.RootDirectory = "Content";
 
-            //just for now add a game scene
-            gameplayScene gameTestScene = new gameplayScene();
-            sceneManager.addScene(gameTestScene);
         }
 
         /// <summary>
@@ -98,10 +109,10 @@ namespace CrackerChase
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            messageFont = Content.Load<SpriteFont>("MessageFont");
-
             screenWidth = GraphicsDevice.Viewport.Width;
             screenHeight = GraphicsDevice.Viewport.Height;
+            /*
+            messageFont = Content.Load<SpriteFont>("MessageFont");
 
             Texture2D cheeseTexture = Content.Load<Texture2D>("cheese");
             Texture2D cloth = Content.Load<Texture2D>("Tablecloth");
@@ -120,12 +131,32 @@ namespace CrackerChase
                 gameSprites.Add(cracker);
                 crackers.Add(cracker);
             }
-
+            
             int cheeseWidth = screenWidth / 15;
             cheese = new Mover(screenWidth, screenHeight, cheeseTexture, cheeseWidth, screenWidth / 2, screenHeight / 2, 500, 500);
-            gameSprites.Add(cheese);
+            //gameSprites.Add(cheese);
+            */
 
-            // go to the start screen state
+
+            //space ship texture
+            Texture2D spaceShipTex = Content.Load<Texture2D>("SpaceShip");
+            int spaceshipWidth = screenWidth / 25;
+
+            //add player with a new mover
+            mPlayer = new Player(
+                new Mover(screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500),
+                screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500);
+
+            //Add the first scene
+            Texture2D splashScreenTex = Content.Load<Texture2D>("splashScreen");
+            Sprite splashImage = new Sprite(screenWidth, screenHeight, splashScreenTex, screenWidth, 0, 0);
+
+            SplashScreen splashScreen = new SplashScreen(splashImage);//create splash screen
+            mSceneManager.addScene(splashScreen);//add the splash screen
+
+            GameplayScene gameTestScene = new GameplayScene(mPlayer);//create gameplay scene
+            mSceneManager.addScene(gameTestScene);//add the scene to the manager
+            
 
             startPlayingGame();
         }
@@ -150,87 +181,12 @@ namespace CrackerChase
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            //passes an update call to the scene manager
-            sceneManager.Update(gameTime);
-
-            /*
+            //get the keys state
             KeyboardState keys = Keyboard.GetState();
-            
-            if (playing)
-            {
 
+            //passes an update call to the scene manager
+            mSceneManager.Update(gameTime, keys);
 
-                if (keys.IsKeyDown(Keys.Up))
-                {
-                    cheese.StartMovingUp();
-                }
-                else
-                {
-                    cheese.StopMovingUp();
-                }
-
-                if (keys.IsKeyDown(Keys.Down))
-                {
-                    cheese.StartMovingDown();
-                }
-                else
-                {
-                    cheese.StopMovingDown();
-                }
-
-                if (keys.IsKeyDown(Keys.Left))
-                {
-                    cheese.StartMovingLeft();
-                }
-                else
-                {
-                    cheese.StopMovingLeft();
-                }
-
-                if (keys.IsKeyDown(Keys.Right))
-                {
-                    cheese.StartMovingRight();
-                }
-                else
-                {
-                    cheese.StopMovingRight();
-                }
-
-                foreach (Sprite s in gameSprites)
-                {
-                    s.Update(1.0f / 60.0f);
-                }
-                foreach (Target t in crackers)
-                {
-                    if (cheese.IntersectsWith(t))
-                    {
-                        BurpSound.Play();
-                        t.Reset();
-                        score = score + 10;
-                    }
-                }
-
-                timer = timer - 1;
-
-                int secsLeft = timer / 60;
-                messageString = "Time: " + secsLeft.ToString() + " Score: " + score;
-
-                if (timer == 0)
-                {
-                    messageString = " Game Over : Press Space to exit   Score: " + score.ToString();
-                    playing = false;
-                }
-            }
-            else
-            {
-                if (keys.IsKeyDown(Keys.Space))
-                {
-                    Exit();
-                }
-            }
-            
-            base.Update(gameTime);
-            */
         }
 
 
@@ -242,23 +198,12 @@ namespace CrackerChase
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            //passes a draw call to the scene manager
-            sceneManager.Draw(gameTime);
-
+            //clear the screen
+            graphics.GraphicsDevice.Clear(Color.Black);
             spriteBatch.Begin();
-
-            foreach (Sprite s in gameSprites)
-            {
-                s.Draw(spriteBatch);
-            }
-            float xPos = (screenWidth - messageFont.MeasureString(messageString).X) / 2;
-
-            Vector2 statusPos = new Vector2(xPos, 10);
-
-            spriteBatch.DrawString(messageFont, messageString, statusPos, Color.Red);
-
+            //passes a draw call to the scene manager
+            mSceneManager.Draw(spriteBatch);
             spriteBatch.End();
-
 
             base.Draw(gameTime);
         }

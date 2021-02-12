@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,7 +53,9 @@ namespace CrackerChase
         protected bool MovingRight;
 
         protected float resetXSpeed;
+        public float getResetXSpeed() { return resetXSpeed; }
         protected float resetYSpeed;
+        public float getResetYSpeed() { return resetYSpeed; }
 
         protected float xSpeed;
         protected float ySpeed;
@@ -64,7 +67,14 @@ namespace CrackerChase
             resetYSpeed = inResetYSpeed;
             Reset();
         }
-
+        /*
+        public Mover(Mover other) 
+            : base(other.getScreenWidth(), other.getScreenHeight(), other.getTexture(), inDrawWidth, inResetX, inResetY)
+        {
+            resetXSpeed = other.getResetXSpeed();
+            resetYSpeed = other.getResetYSpeed();
+        }
+        */
         public override void Reset()
         {
             MovingDown = false;
@@ -86,18 +96,22 @@ namespace CrackerChase
             if (MovingLeft)
             {
                 xPosition = xPosition - (xSpeed * deltaTime);
+                Console.WriteLine("Moving left");
             }
             if (MovingRight)
             {
                 xPosition = xPosition + (xSpeed * deltaTime);
+                Console.WriteLine("Moving right");
             }
             if (MovingUp)
             {
                 yPosition = yPosition - (ySpeed * deltaTime);
+                Console.WriteLine("Moving up");
             }
             if (MovingDown)
             {
                 yPosition = yPosition + (ySpeed * deltaTime);
+                Console.WriteLine("Moving down");
             }
 
             if (xPosition < 0)
@@ -117,9 +131,17 @@ namespace CrackerChase
             {
                 yPosition = screenHeight - rectangle.Height;
             }
-
+            //Console.WriteLine("xpos: {0}, ypos:{1}", xPosition,yPosition );
             base.Update(deltaTime);
         }
+        /*
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            rectangle.X = (int)Math.Round(xPosition);
+            rectangle.Y = (int)Math.Round(yPosition);
+            spriteBatch.Draw(texture, rectangle, Color.White);
+        }
+        */
 
     }
 }

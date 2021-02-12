@@ -6,6 +6,7 @@ using System.Linq;
 using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Input;
 
 namespace CrackerChase
 {
@@ -16,13 +17,13 @@ namespace CrackerChase
         public SceneManager()
         {
             //init the scenes
-            mScenes = new List<gameScene>();
+            mScenes = new List<GameScene>();
             mCurrentScene = 0;//by default we start in scene zero
         }
 
 
         //manages interaction of scenes (changing, adding, removing etc):
-        public int addScene(gameScene scene)//should take in a scene to add to the list, returns the id of the new scene
+        public int addScene(GameScene scene)//should take in a scene to add to the list, returns the id of the new scene
         {
             mScenes.Add(scene);
             return mScenes.Count - 1;
@@ -32,12 +33,12 @@ namespace CrackerChase
             return mCurrentScene;
         }
 
-        public gameScene getCurrentScene()
+        public GameScene getCurrentScene()
         {
             return mScenes[mCurrentScene];
         }
 
-        public gameScene getSceneByID(int ID)
+        public GameScene getSceneByID(int ID)
         {
             return mScenes[ID];
         }
@@ -45,21 +46,32 @@ namespace CrackerChase
         {
             mScenes.Remove(mScenes[ID]);
         }
-
+        public void selectNextScene()
+        {
+            mCurrentScene++;
+        }
+        public void selectPrevScene()
+        {
+            mCurrentScene--;
+        }
+        public void selectSceneByID(int ID)
+        {
+            mCurrentScene = ID;
+        }
 
         //manages updates, draws etc
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, KeyboardState keys)
         {
-            mScenes[mCurrentScene].Update(gameTime);
+            mScenes[mCurrentScene].Update(gameTime, keys, this);
         }
-        public void Draw(GameTime gametime)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            mScenes[mCurrentScene].Draw(gametime);
+            mScenes[mCurrentScene].Draw(spriteBatch);
         }
 
 
         //members:
-        private List<gameScene> mScenes;
+        private List<GameScene> mScenes;
         private int mCurrentScene;//the index of the game scene list that is the currently selected scene
     }
 }
