@@ -145,7 +145,7 @@ namespace CrackerChase
             //add player with a new mover
             mPlayer = new Player(
                 new Mover(screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500),
-                screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500);
+                screenWidth, screenHeight, spaceShipTex, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500);
 
             //Add the first scene
             Texture2D splashScreenTex = Content.Load<Texture2D>("splashScreen");
@@ -183,9 +183,11 @@ namespace CrackerChase
         {
             //get the keys state
             KeyboardState keys = Keyboard.GetState();
-
+            
             //passes an update call to the scene manager
-            mSceneManager.Update(gameTime, keys);
+            screenWidth = GraphicsDevice.Viewport.Width;
+            screenHeight = GraphicsDevice.Viewport.Height;
+            mSceneManager.Update(gameTime, keys, screenWidth, screenHeight);
 
         }
 

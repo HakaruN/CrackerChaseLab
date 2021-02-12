@@ -60,9 +60,9 @@ namespace CrackerChase
         }
 
         //manages updates, draws etc
-        public void Update(GameTime gameTime, KeyboardState keys)
+        public void Update(GameTime gameTime, KeyboardState keys, int inScreenWidth, int inScreenHeight)
         {
-            mScenes[mCurrentScene].Update(gameTime, keys, this);
+            mScenes[mCurrentScene].Update(gameTime, keys, this, inScreenWidth, inScreenHeight);
         }
         public void Draw(SpriteBatch spriteBatch)
         {

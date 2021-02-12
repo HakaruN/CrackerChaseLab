@@ -17,17 +17,40 @@ namespace CrackerChase
 
         bool bHasFired = false;
 
-        public Player(int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) : base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
+        public Player(int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, Texture2D bulletTexture, int inDrawWidth,  float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) : base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
         {
-
+            //init the bullet
+            mBullet = new Mover(inScreenWidth, inScreenHeight, bulletTexture, inDrawWidth, 50, 50, 0, 0);
         }
 
-        public Player(Mover playerMover, int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) : base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
+        public Player(Mover playerMover, int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, Texture2D bulletTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) : base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
         {
+            //init the bullet
+            mBullet = new Mover(inScreenWidth, inScreenHeight, bulletTexture, inDrawWidth, 50, 50, 0, 0);
+
             mMover = playerMover;
         }
 
-        public void Update(float deltaTime, KeyboardState keys)
+        //check if bullet is onscreen
+        private bool isBulletOnscreen(int inScreenWidth, int inScreenHeight)
+        {
+            if(mBullet.GetPos().X < inScreenWidth || mBullet.GetPos().X > 0)
+            //if its within the width of the screen
+            {
+                if(mBullet.GetPos().Y < inScreenHeight || mBullet.GetPos().Y > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            return false;
+        }
+
+        public void Update(float deltaTime, KeyboardState keys, int inScreenWidth , int inScreenHeight)
         {
 
             //do player specific updating:
@@ -56,6 +79,27 @@ namespace CrackerChase
 
             //call the update function for the mover object
             mMover.Update(1.0f / 60f);
+<<<<<<< HEAD
+=======
+
+
+            if(mBullet != null)
+            {
+                if (isBulletOnscreen(inScreenWidth, inScreenHeight))
+                {
+                    //if the bullet is onscreen then move the bullet up
+                    mBullet.StartMovingUp();
+                    bHasFired = true;
+                }
+                else
+                {
+                    //set has fired to false so we can fire again
+                    bHasFired = false;
+                }
+                
+            }
+
+>>>>>>> 7530ffd9a5458f869c7eb38478a9959606ffec7a
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -73,6 +117,7 @@ namespace CrackerChase
 
         public void fireGun()
         {
+<<<<<<< HEAD
             bHasFired = true;
 
             if (mBullet != null)
@@ -112,95 +157,22 @@ namespace CrackerChase
             bool bHasFired = false;
 
             public Player()
-            {
-                graphics = new GraphicsDeviceManager(this);
-                Content.RootDirectory = "Content";
-            }
-
-            protected override void LoadContent()
-            {
-                spriteBatch = new SpriteBatch(GraphicsDevice);
-                messageFont = Content.Load<SpriteFont>("MessageFont");
-
-                screenWidth = GraphicsDevice.Viewport.Width;
-                screenHeight = GraphicsDevice.Viewport.Height;
-
-                Texture2D mainPlayerTexture = Content.Load<Texture2D>("mainPlayer");
-                gameSprites.Add(mainPlayer);
-
-<<<<<<< HEAD
-                int mainPlayerWidth = screenWidth / 15;
-
-                mainPlayer = new Mover(screenWidth, screenHeight, mainPlayerTexture, mainPlayerWidth, screenWidth / 2, screenHeight / 2, 500, 500);
-            }
 =======
-            base.Draw(gameTime);
+            //bHasFired = true;
+
+            if (mBullet != null && bHasFired)
+>>>>>>> 7530ffd9a5458f869c7eb38478a9959606ffec7a
+            {
+                mBullet.SetPosition(GetPos().X, GetPos().Y);
+                //mBullet.SetPosition(mMover.GetPos());
+            }
+
+
+            //fire the bullet
+
+            //play sound
+
         }
-    }
->>>>>>> master
-
-            public new void Update(GameTime gameTime)
-            {
-                KeyboardState keys = Keyboard.GetState();
-
-
-                if(keys.IsKeyDown(Keys.Left))
-                {
-                    mainPlayer.StopMovingLeft();
-                }
-                else
-                {
-                    mainPlayer.StopMovingLeft();
-                }
-
-                if(keys.IsKeyDown(Keys.Right))
-                {
-                    mainPlayer.StartMovingRight();
-                }
-                else
-                {
-                    mainPlayer.StopMovingRight();
-                }
-
-                if(keys.IsKeyDown(Keys.Space) && !bHasFired)
-                {
-                    Fire();
-                }
-
-                foreach (Sprite s in gameSprites)
-                {
-                    s.Update(1.0f / 60.0f);
-                }
-
-                base.Update(gameTime);
-            }
-
-            void Fire()
-            {
-                bHasFired = true;
-            }
-            public new void Draw(GameTime gameTime)
-            {
-
-                spriteBatch.Begin();
-
-                foreach (Sprite s in gameSprites)
-                {
-                    s.Draw(spriteBatch);
-                }
-                float xPos = (screenWidth - messageFont.MeasureString(messageString).X) / 2;
-
-                Vector2 statusPos = new Vector2(xPos, 10);
-
-                spriteBatch.DrawString(messageFont, messageString, statusPos, Color.Red);
-
-                spriteBatch.End();
-
-
-                base.Draw(gameTime);
-            }
-        }
-        */
 
     }
 }
