@@ -14,37 +14,51 @@ namespace CrackerChase
         public GameplayScene(Player player)
         {
             mPlayer = player;
-            mEnemies = new List<Enemy>();
             gameScore = 0;
         }
+
+        public GameplayScene(Enemy enemy)
+        {
+            mEnemy = enemy;
+        }
+
         public void Update(GameTime gametime, KeyboardState keys, SceneManager manager, int inScreenWidth, int inScreenHeight)
         {
             //call update method on the player
             mPlayer.Update(1/60f, keys, inScreenWidth, inScreenHeight);
 
+            mEnemy.Update(gametime);
+
             //call update method on the aliens
+            /*
             for(int i = 0; i < mEnemies.Count(); i++)
             {
-               //mEnemies[i].Update(gametime);
+               mEnemies[i].Update(gametime);
             }
+            */
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             //call draw method on the player
             mPlayer.Draw(spriteBatch);
-            
+
+            /*
             //call draw on the aliens
             for(int i = 0; i < mEnemies.Count(); i++)
             {
-               // mEnemies[i].Draw(gametime);
+               mEnemies[i].Draw(spriteBatch);
             }
+            */
+
+            mEnemy.Draw(spriteBatch);
         }
 
         int gameScore;
         Player mPlayer;//player
-        List<Enemy> mEnemies;//list of the aliens
-        
+        //List<Enemy> mEnemies;//list of the aliens
+        Enemy mEnemy;
+
         //todo: add list of aliens, player object
     }
 }

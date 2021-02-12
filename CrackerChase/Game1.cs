@@ -27,6 +27,7 @@ namespace CrackerChase
         SceneManager mSceneManager;
         //player
         Player mPlayer;
+        Enemy mEnemy;
 
         //legacy crap
         //Mover cheese;
@@ -146,6 +147,10 @@ namespace CrackerChase
             mPlayer = new Player(
                 new Mover(screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500),
                 screenWidth, screenHeight, spaceShipTex, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500);
+
+            mEnemy = new Enemy(new Mover
+                (screenWidth,screenHeight,spaceShipTex,spaceshipWidth,screenWidth/2,screenHeight-20,500,500),
+                screenWidth,screenHeight,spaceShipTex,spaceshipWidth,screenWidth/2,screenHeight-20,500,500);
 
             //Add the first scene
             Texture2D splashScreenTex = Content.Load<Texture2D>("splashScreen");
