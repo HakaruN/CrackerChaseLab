@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>D:/Work/Year 5-Masters/Development Project/CrackerChaseLab/CrackerChase/Content/beep2.wav</SourceFile>
-  <SourceTime>2021-02-12T10:12:17.4132744+00:00</SourceTime>
-  <DestFile>D:/Work/Year 5-Masters/Development Project/CrackerChaseLab/CrackerChase/Content/bin/Windows/beep2.xnb</DestFile>
-  <DestTime>2021-02-12T10:12:50.4585438+00:00</DestTime>
+  <SourceFile>C:/Users/Hakaru/Documents/spaceInvaders2/CrackerChaseLab/CrackerChase/Content/beep2.wav</SourceFile>
+  <SourceTime>2021-02-08T12:58:10.7927663+00:00</SourceTime>
+  <DestFile>C:/Users/Hakaru/Documents/spaceInvaders2/CrackerChaseLab/CrackerChase/Content/bin/Windows/beep2.xnb</DestFile>
+  <DestTime>2021-02-08T12:58:25.9166013+00:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2017-03-01T15:05:36+00:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>

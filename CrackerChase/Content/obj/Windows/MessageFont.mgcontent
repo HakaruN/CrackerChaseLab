@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>D:/Work/Year 5-Masters/Development Project/CrackerChaseLab/CrackerChase/Content/MessageFont.spritefont</SourceFile>
-  <SourceTime>2021-02-12T10:12:17.4042984+00:00</SourceTime>
-  <DestFile>D:/Work/Year 5-Masters/Development Project/CrackerChaseLab/CrackerChase/Content/bin/Windows/MessageFont.xnb</DestFile>
-  <DestTime>2021-02-12T10:12:51.4686945+00:00</DestTime>
+  <SourceFile>C:/Users/Hakaru/Documents/spaceInvaders2/CrackerChaseLab/CrackerChase/Content/MessageFont.spritefont</SourceFile>
+  <SourceTime>2021-02-08T12:58:10.7827633+00:00</SourceTime>
+  <DestFile>C:/Users/Hakaru/Documents/spaceInvaders2/CrackerChaseLab/CrackerChase/Content/bin/Windows/MessageFont.xnb</DestFile>
+  <DestTime>2021-02-08T12:58:26.7648018+00:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2017-03-01T15:05:36+00:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>
