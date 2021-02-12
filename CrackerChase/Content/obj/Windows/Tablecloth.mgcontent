@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Itchy/Desktop/Space Invader/CrackerChase/Content/Tablecloth.png</SourceFile>
-  <SourceTime>2021-02-12T10:14:14.7345484+00:00</SourceTime>
-  <DestFile>C:/Users/Itchy/Desktop/Space Invader/CrackerChase/Content/bin/Windows/Tablecloth.xnb</DestFile>
-  <DestTime>2021-02-12T11:13:02.0389477+00:00</DestTime>
+  <SourceFile>D:/Work/Year 5-Masters/Development Project/CrackerChaseLab/CrackerChase/Content/Tablecloth.png</SourceFile>
+  <SourceTime>2021-02-12T11:29:10.6085518+00:00</SourceTime>
+  <DestFile>D:/Work/Year 5-Masters/Development Project/CrackerChaseLab/CrackerChase/Content/bin/Windows/Tablecloth.xnb</DestFile>
+  <DestTime>2021-02-12T11:58:34.1319731+00:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T15:05:36+00:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

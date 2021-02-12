@@ -28,8 +28,8 @@ namespace CrackerChase
         //player
         Player mPlayer;
         Enemy mEnemy;
-        List<Enemy> mEnemies;
 
+        List<Enemy> mEnemies;
         //legacy crap
         //Mover cheese;
         //Target cracker;
