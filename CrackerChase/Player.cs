@@ -13,6 +13,9 @@ namespace CrackerChase
     {
         //members
         Mover mMover;//the mover that represents the player        
+        Mover mBullet;
+
+        bool bHasFired = false;
 
         public Player(int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) : base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
         {
@@ -28,7 +31,7 @@ namespace CrackerChase
         {
 
             //do player specific updating:
-            if (keys.IsKeyDown(Keys.Left))
+            if (keys.IsKeyDown(Keys.Left) || (keys.IsKeyDown(Keys.A)))
             {
                 mMover.StartMovingLeft();
             }
@@ -37,7 +40,7 @@ namespace CrackerChase
                 mMover.StopMovingLeft();
             }
 
-            if (keys.IsKeyDown(Keys.Right))
+            if (keys.IsKeyDown(Keys.Right) || (keys.IsKeyDown(Keys.D)))
             {
                 mMover.StartMovingRight();
             }
@@ -46,13 +49,19 @@ namespace CrackerChase
                 mMover.StopMovingRight();
             }
 
-            if (keys.IsKeyDown(Keys.Space))
+            if (keys.IsKeyDown(Keys.Space) && !bHasFired)
             {
                 fireGun();
             }            
 
             //call the update function for the mover object
             mMover.Update(1.0f / 60f);
+
+            if(mBullet != null)
+            {
+                mBullet.SetPosition(GetPos().X, GetPos().Y);
+                mBullet.StartMovingUp();
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -70,8 +79,9 @@ namespace CrackerChase
 
         public void fireGun()
         {
-            //TODO:
-            //check if there is a bullet on screen
+            bHasFired = true;
+
+
 
             //fire the bullet
 
