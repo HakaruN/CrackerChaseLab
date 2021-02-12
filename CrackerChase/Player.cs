@@ -39,17 +39,15 @@ namespace CrackerChase
             {
                 if(mBullet.GetPos().Y < inScreenHeight || mBullet.GetPos().Y > 0)
                 {
-                    mBullet.StartMovingUp();
+                    return true;
                 }
                 else
                 {
-                    mBullet.StopMovingUp();
+                    return false;
                 }
             }
 
-
-
-
+            return false;
         }
 
         public void Update(float deltaTime, KeyboardState keys, int inScreenWidth , int inScreenHeight)
@@ -82,15 +80,15 @@ namespace CrackerChase
             //call the update function for the mover object
             mMover.Update(1.0f / 60f);
 
-<<<<<<< HEAD
 
-=======
             if(mBullet != null)
             {
-                mBullet.SetPosition(mMover.GetPos());
-                mBullet.StartMovingUp();
+                if(isBulletOnscreen(inScreenWidth, inScreenHeight))
+                    mBullet.StartMovingUp();
+
+                
             }
->>>>>>> 54a334e46439cace0ee7aabcb481187de35ac5e7
+
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -113,6 +111,7 @@ namespace CrackerChase
             if (mBullet != null)
             {
                 mBullet.SetPosition(GetPos().X, GetPos().Y);
+                //mBullet.SetPosition(mMover.GetPos());
             }
 
 
