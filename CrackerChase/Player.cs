@@ -14,6 +14,7 @@ namespace CrackerChase
         //members
         Mover mMover;//the mover that represents the player        
         Mover mBullet;
+        SoundManager soundManager;
 
         bool bHasFired = false;
         bool isOnScreen = false;
