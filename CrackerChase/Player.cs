@@ -59,7 +59,7 @@ namespace CrackerChase
 
             if(mBullet != null)
             {
-                mBullet.SetPosition(GetPos().X, GetPos().Y);
+                mBullet.SetPosition(mMover.GetPos());
                 mBullet.StartMovingUp();
             }
         }
