@@ -30,6 +30,7 @@ namespace CrackerChase
         Enemy mEnemy;
 
         List<Enemy> mEnemies;
+        SoundManager soundManager;
         List<Barricade> mBarricade;
         //legacy crap
         //Mover cheese;
@@ -74,6 +75,7 @@ namespace CrackerChase
             GameTime gameTime1 = new GameTime();
             while (isRunning)
             {
+                
                 this.Update(gameTime1);
             }
            
@@ -147,24 +149,12 @@ namespace CrackerChase
             //space ship texture
             Texture2D spaceShipTex = Content.Load<Texture2D>("SpaceShip");
             int spaceshipWidth = screenWidth / 25;
-
+             soundManager = new SoundManager(Content);
+            
             //add player with a new mover
             mPlayer = new Player(
                 new Mover(screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500),
-                screenWidth, screenHeight, spaceShipTex, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500);
-
-            int numRowsOfEnemies = 5, numColsOfEnemies = 5;
-            int enemiesXPos = 100, enemiesYPos = 0;
-
-            for(int i = 0; i < numRowsOfEnemies; i++)
-            {
-                for(int j = 0; j < numColsOfEnemies; j++)
-                {
-                    mEnemies.Add(new Enemy(new Mover
-                    (screenWidth, screenHeight, spaceShipTex, spaceshipWidth, (j * 60) + enemiesXPos, (i * 60) + enemiesYPos, 500, 500),
-                    screenWidth, screenHeight, spaceShipTex, spaceshipWidth, (j * 60) + enemiesXPos, (i * 60) + enemiesYPos, 500, 500));
-                }
-            }
+                screenWidth, screenHeight, spaceShipTex, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500,soundManager);
             mEnemies.Add(new Enemy(new Mover
                 (screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500),
                 screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500));
@@ -185,10 +175,10 @@ namespace CrackerChase
             SplashScreen splashScreen = new SplashScreen(splashImage);//create splash screen
             mSceneManager.addScene(splashScreen);//add the splash screen
 
-            GameplayScene gameTestScene = new GameplayScene(mPlayer, mEnemies, mBarricade, ref enemiesXPos, ref enemiesYPos);//create gameplay scene
+            GameplayScene gameTestScene = new GameplayScene(mPlayer, mEnemies, mBarricade);//create gameplay scene
             mSceneManager.addScene(gameTestScene);//add the scene to the manager
-            
 
+          
             startPlayingGame();
         }
 

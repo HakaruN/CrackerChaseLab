@@ -11,7 +11,7 @@ namespace CrackerChase
 {
     class GameplayScene : GameScene
     {
-        public GameplayScene(Player player, List<Enemy> enemies, List<Barricade> barricades, ref int enemiesXPos, ref int enemiesYPos)
+        public GameplayScene(Player player, List<Enemy> enemies, List<Barricade> barricades)
         {
             mPlayer = player;
             mEnemies = enemies;
@@ -35,35 +35,41 @@ namespace CrackerChase
             if(mEnemiesXPos <= 10)
             {
                 enemyMoveDir = false;
-                mEnemiesYPos = mEnemiesYPos - 10;
+                mEnemiesYPos = mEnemiesYPos - 1;
             }
-            else if(mEnemiesXPos >= inScreenWidth - 10)
+            else if(mEnemiesXPos >= inScreenWidth - 1)
             {
                 enemyMoveDir = true;
-                mEnemiesYPos = mEnemiesYPos - 10;
+                mEnemiesYPos = mEnemiesYPos - 1;
             }
 
             //apply position changes
             if(enemyMoveDir == false)
             {
-                    mEnemiesXPos = mEnemiesXPos - 10;
+                mEnemiesXPos = mEnemiesXPos - 1;
             }
             else
             {
-                mEnemiesXPos = mEnemiesXPos + 10;
+                mEnemiesXPos = mEnemiesXPos + 1;
             }
-            
+            Console.WriteLine("xPos {0}, yPos {1}", mEnemiesXPos, mEnemiesYPos);
             
 
             for (int i = 0; i < mEnemies.Count(); i++)
             {
                 mEnemies[i].SetPosition(mEnemies[i].GetPos().X + mEnemiesXPos, mEnemies[i].GetPos().Y + mEnemiesYPos);
-               mEnemies[i].Update(gametime);
+                mEnemies[i].Update(gametime);
             }
 
             for(int i = 0; i < mBarricades.Count; i++)
             {
                 mBarricades[i].Update(gametime);
+            }
+
+            //end game logic
+            if(mEnemiesYPos <= 100)
+            {
+                Console.WriteLine("Game lost");
             }
             
         }
