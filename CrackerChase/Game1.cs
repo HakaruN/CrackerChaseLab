@@ -28,6 +28,7 @@ namespace CrackerChase
         //player
         Player mPlayer;
         Enemy mEnemy;
+        List<Enemy> mEnemies;
 
         //legacy crap
         //Mover cheese;
@@ -138,6 +139,8 @@ namespace CrackerChase
             //gameSprites.Add(cheese);
             */
 
+            //init the enemies list
+            mEnemies = new List<Enemy>(); 
 
             //space ship texture
             Texture2D spaceShipTex = Content.Load<Texture2D>("SpaceShip");
@@ -147,10 +150,12 @@ namespace CrackerChase
             mPlayer = new Player(
                 new Mover(screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500),
                 screenWidth, screenHeight, spaceShipTex, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500);
-
-            mEnemy = new Enemy(new Mover
+            mEnemies.Add(new Enemy(new Mover
+                (screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500),
+                screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500));
+            /*mEnemy = new Enemy(new Mover
                 (screenWidth,screenHeight,spaceShipTex,spaceshipWidth,screenWidth/2,screenHeight-20,500,500),
-                screenWidth,screenHeight,spaceShipTex,spaceshipWidth,screenWidth/2,screenHeight-20,500,500);
+                screenWidth,screenHeight,spaceShipTex,spaceshipWidth,screenWidth/2,screenHeight-20,500,500);*/
 
             //Add the first scene
             Texture2D splashScreenTex = Content.Load<Texture2D>("splashScreen");
@@ -159,7 +164,7 @@ namespace CrackerChase
             SplashScreen splashScreen = new SplashScreen(splashImage);//create splash screen
             mSceneManager.addScene(splashScreen);//add the splash screen
 
-            GameplayScene gameTestScene = new GameplayScene(mPlayer);//create gameplay scene
+            GameplayScene gameTestScene = new GameplayScene(mPlayer, mEnemies);//create gameplay scene
             mSceneManager.addScene(gameTestScene);//add the scene to the manager
             
 
