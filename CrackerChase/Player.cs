@@ -116,7 +116,6 @@ namespace CrackerChase
 
         public void fireGun()
         {
-<<<<<<< HEAD
             bHasFired = true;
 
             if (mBullet != null)
@@ -132,46 +131,6 @@ namespace CrackerChase
         }
 
 
-        /*
-        class Player : Game
-        {
-<<<<<<< HEAD
-            GraphicsDeviceManager graphics;
-            SpriteBatch spriteBatch;
-
-            List<Sprite> gameSprites = new List<Sprite>();
-=======
-            spriteBatch.Begin();
->>>>>>> master
-
-            SpriteFont messageFont;
-
-            string messageString = "Hello world";
-
-            Mover mainPlayer;
-
-            int screenWidth;
-            int screenHeight;
-
-            bool bHasFired = false;
-
-            public Player()
-=======
-            //bHasFired = true;
-
-            if (mBullet != null && bHasFired)
->>>>>>> 7530ffd9a5458f869c7eb38478a9959606ffec7a
-            {
-                mBullet.SetPosition(GetPos().X, GetPos().Y);
-                //mBullet.SetPosition(mMover.GetPos());
-            }
-
-
-            //fire the bullet
-
-            //play sound
-
-        }
 
     }
 }
