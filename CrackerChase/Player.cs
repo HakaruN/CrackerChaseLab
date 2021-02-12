@@ -79,8 +79,7 @@ namespace CrackerChase
 
             //call the update function for the mover object
             mMover.Update(1.0f / 60f);
-<<<<<<< HEAD
-=======
+
 
 
             if(mBullet != null)
@@ -99,7 +98,7 @@ namespace CrackerChase
                 
             }
 
->>>>>>> 7530ffd9a5458f869c7eb38478a9959606ffec7a
+
         }
 
         public override void Draw(SpriteBatch spriteBatch)
