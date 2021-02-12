@@ -11,10 +11,11 @@ namespace CrackerChase
 {
     class GameplayScene : GameScene
     {
-        public GameplayScene(Player player, List<Enemy> enemies)
+        public GameplayScene(Player player, List<Enemy> enemies, List<Barricade> barricades)
         {
             mPlayer = player;
             mEnemies = enemies;
+            mBarricades = barricades;
             gameScore = 0;
         }
         /*
@@ -38,6 +39,11 @@ namespace CrackerChase
             {
                mEnemies[i].Update(gametime);
             }
+
+            for(int i = 0; i < mBarricades.Count; i++)
+            {
+                mBarricades[i].Update(gametime);
+            }
             
         }
 
@@ -53,6 +59,10 @@ namespace CrackerChase
                mEnemies[i].Draw(spriteBatch);
             }
             
+            for(int i = 0; i < mBarricades.Count; i++)
+            {
+                mBarricades[i].Draw(spriteBatch);
+            }
 
             //mEnemy.Draw(spriteBatch);
         }
@@ -60,6 +70,7 @@ namespace CrackerChase
         int gameScore;
         Player mPlayer;//player
         List<Enemy> mEnemies;//list of the aliens
+        List<Barricade> mBarricades;
         //Enemy mEnemy;
 
         //todo: add list of aliens, player object

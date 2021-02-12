@@ -141,7 +141,8 @@ namespace CrackerChase
             */
 
             //init the enemies list
-            mEnemies = new List<Enemy>(); 
+            mEnemies = new List<Enemy>();
+            mBarricade = new List<Barricade>();
 
             //space ship texture
             Texture2D spaceShipTex = Content.Load<Texture2D>("SpaceShip");
@@ -155,7 +156,7 @@ namespace CrackerChase
                 (screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500),
                 screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500));
 
-            mBarricade.Add(new Barricade(new Mover(screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500),
+            mBarricade.Add(new Barricade(new Mover(screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 4, screenHeight - 20, 500, 500),
                 screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500));
 
 
@@ -171,7 +172,7 @@ namespace CrackerChase
             SplashScreen splashScreen = new SplashScreen(splashImage);//create splash screen
             mSceneManager.addScene(splashScreen);//add the splash screen
 
-            GameplayScene gameTestScene = new GameplayScene(mPlayer, mEnemies);//create gameplay scene
+            GameplayScene gameTestScene = new GameplayScene(mPlayer, mEnemies, mBarricade);//create gameplay scene
             mSceneManager.addScene(gameTestScene);//add the scene to the manager
             
 
