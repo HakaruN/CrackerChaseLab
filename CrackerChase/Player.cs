@@ -83,9 +83,17 @@ namespace CrackerChase
 
             if(mBullet != null)
             {
-                if(isBulletOnscreen(inScreenWidth, inScreenHeight))
+                if (isBulletOnscreen(inScreenWidth, inScreenHeight))
+                {
+                    //if the bullet is onscreen then move the bullet up
                     mBullet.StartMovingUp();
-
+                    bHasFired = true;
+                }
+                else
+                {
+                    //set has fired to false so we can fire again
+                    bHasFired = false;
+                }
                 
             }
 
@@ -106,9 +114,9 @@ namespace CrackerChase
 
         public void fireGun()
         {
-            bHasFired = true;
+            //bHasFired = true;
 
-            if (mBullet != null)
+            if (mBullet != null && bHasFired)
             {
                 mBullet.SetPosition(GetPos().X, GetPos().Y);
                 //mBullet.SetPosition(mMover.GetPos());
@@ -120,121 +128,6 @@ namespace CrackerChase
             //play sound
 
         }
-
-
-        /*
-        class Player : Game
-        {
-<<<<<<< HEAD
-            GraphicsDeviceManager graphics;
-            SpriteBatch spriteBatch;
-
-            List<Sprite> gameSprites = new List<Sprite>();
-=======
-            spriteBatch.Begin();
->>>>>>> master
-
-            SpriteFont messageFont;
-
-            string messageString = "Hello world";
-
-            Mover mainPlayer;
-
-            int screenWidth;
-            int screenHeight;
-
-            bool bHasFired = false;
-
-            public Player()
-            {
-                graphics = new GraphicsDeviceManager(this);
-                Content.RootDirectory = "Content";
-            }
-
-            protected override void LoadContent()
-            {
-                spriteBatch = new SpriteBatch(GraphicsDevice);
-                messageFont = Content.Load<SpriteFont>("MessageFont");
-
-                screenWidth = GraphicsDevice.Viewport.Width;
-                screenHeight = GraphicsDevice.Viewport.Height;
-
-                Texture2D mainPlayerTexture = Content.Load<Texture2D>("mainPlayer");
-                gameSprites.Add(mainPlayer);
-
-<<<<<<< HEAD
-                int mainPlayerWidth = screenWidth / 15;
-
-                mainPlayer = new Mover(screenWidth, screenHeight, mainPlayerTexture, mainPlayerWidth, screenWidth / 2, screenHeight / 2, 500, 500);
-            }
-=======
-            base.Draw(gameTime);
-        }
-    }
->>>>>>> master
-
-            public new void Update(GameTime gameTime)
-            {
-                KeyboardState keys = Keyboard.GetState();
-
-
-                if(keys.IsKeyDown(Keys.Left))
-                {
-                    mainPlayer.StopMovingLeft();
-                }
-                else
-                {
-                    mainPlayer.StopMovingLeft();
-                }
-
-                if(keys.IsKeyDown(Keys.Right))
-                {
-                    mainPlayer.StartMovingRight();
-                }
-                else
-                {
-                    mainPlayer.StopMovingRight();
-                }
-
-                if(keys.IsKeyDown(Keys.Space) && !bHasFired)
-                {
-                    Fire();
-                }
-
-                foreach (Sprite s in gameSprites)
-                {
-                    s.Update(1.0f / 60.0f);
-                }
-
-                base.Update(gameTime);
-            }
-
-            void Fire()
-            {
-                bHasFired = true;
-            }
-            public new void Draw(GameTime gameTime)
-            {
-
-                spriteBatch.Begin();
-
-                foreach (Sprite s in gameSprites)
-                {
-                    s.Draw(spriteBatch);
-                }
-                float xPos = (screenWidth - messageFont.MeasureString(messageString).X) / 2;
-
-                Vector2 statusPos = new Vector2(xPos, 10);
-
-                spriteBatch.DrawString(messageFont, messageString, statusPos, Color.Red);
-
-                spriteBatch.End();
-
-
-                base.Draw(gameTime);
-            }
-        }
-        */
 
     }
 }

@@ -22,7 +22,7 @@ namespace CrackerChase
             mScreenTime = screenTime;
             mEnduredScreenTime = 0;
         }
-        public void Update(GameTime gametime, KeyboardState keys, SceneManager manager)
+        public void Update(GameTime gametime, KeyboardState keys, SceneManager manager, int inScreenWidth, int inScreenHeight)
         {
             //if we have endured the required amount of time, transition to next scene
             if(mEnduredScreenTime >= mScreenTime)

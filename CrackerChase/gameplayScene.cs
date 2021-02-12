@@ -17,10 +17,10 @@ namespace CrackerChase
             mEnemies = new List<Enemy>();
             gameScore = 0;
         }
-        public void Update(GameTime gametime, KeyboardState keys, SceneManager manager)
+        public void Update(GameTime gametime, KeyboardState keys, SceneManager manager, int inScreenWidth, int inScreenHeight)
         {
             //call update method on the player
-            mPlayer.Update(1/60f, keys);
+            mPlayer.Update(1/60f, keys, inScreenWidth, inScreenHeight);
 
             //call update method on the aliens
             for(int i = 0; i < mEnemies.Count(); i++)
