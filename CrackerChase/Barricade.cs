@@ -1,17 +1,45 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
+
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace CrackerChase
 {
 
-    class Barricade
+    class Barricade : Mover
     {
-        
+        //members
+        Mover mMover;//the mover that represents the player
 
+        public Barricade(int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) : base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
+        {
 
+        }
+
+        public Barricade(Mover playerMover, int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) : base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
+        {
+            mMover = playerMover;
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            mMover.Draw(spriteBatch);
+        }
+
+        //add a sprite to the sprite list
+        public void addSprite(Mover m)
+        {
+            mMover = m;
+        }
+
+        public void Update(GameTime gameTime)
+        {
+
+        }
 
 
     }

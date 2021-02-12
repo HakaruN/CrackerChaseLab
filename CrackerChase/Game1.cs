@@ -30,6 +30,7 @@ namespace CrackerChase
         Enemy mEnemy;
 
         List<Enemy> mEnemies;
+        List<Barricade> mBarricade;
         //legacy crap
         //Mover cheese;
         //Target cracker;
@@ -153,6 +154,12 @@ namespace CrackerChase
             mEnemies.Add(new Enemy(new Mover
                 (screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500),
                 screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500));
+
+            mBarricade.Add(new Barricade(new Mover(screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500),
+                screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500));
+
+
+
             /*mEnemy = new Enemy(new Mover
                 (screenWidth,screenHeight,spaceShipTex,spaceshipWidth,screenWidth/2,screenHeight-20,500,500),
                 screenWidth,screenHeight,spaceShipTex,spaceshipWidth,screenWidth/2,screenHeight-20,500,500);*/
