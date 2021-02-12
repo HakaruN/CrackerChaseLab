@@ -27,7 +27,7 @@ namespace CrackerChase
             //call update method on the player
             mPlayer.Update(1/60f, keys, inScreenWidth, inScreenHeight);
 
-            mEnemy.Update(gametime);
+            ///mEnemy.Update(gametime);
 
             //call update method on the aliens
             /*
@@ -51,7 +51,7 @@ namespace CrackerChase
             }
             */
 
-            mEnemy.Draw(spriteBatch);
+            //mEnemy.Draw(spriteBatch);
         }
 
         int gameScore;

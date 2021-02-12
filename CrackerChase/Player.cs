@@ -47,6 +47,7 @@ namespace CrackerChase
                 else
                 {
                     //Console.WriteLine("Bullet offscreen");
+                    mBullet.SetPosition(-10.0f, 0);
                     return false;
                 }
             }
