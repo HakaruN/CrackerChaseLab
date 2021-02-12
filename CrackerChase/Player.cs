@@ -17,17 +17,42 @@ namespace CrackerChase
 
         bool bHasFired = false;
 
-        public Player(int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) : base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
+        public Player(int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, Texture2D bulletTexture, int inDrawWidth,  float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) : base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
         {
-
+            //init the bullet
+            mBullet = new Mover(inScreenWidth, inScreenHeight, bulletTexture, inDrawWidth, 50, 50, 0, 0);
         }
 
-        public Player(Mover playerMover, int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) : base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
+        public Player(Mover playerMover, int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, Texture2D bulletTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) : base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
         {
+            //init the bullet
+            mBullet = new Mover(inScreenWidth, inScreenHeight, bulletTexture, inDrawWidth, 50, 50, 0, 0);
+
             mMover = playerMover;
         }
 
-        public void Update(float deltaTime, KeyboardState keys)
+        //check if bullet is onscreen
+        private bool isBulletOnscreen(int inScreenWidth, int inScreenHeight)
+        {
+            if(mBullet.GetPos().X < inScreenWidth || mBullet.GetPos().X > 0)
+            //if its within the width of the screen
+            {
+                if(mBullet.GetPos().Y < inScreenHeight || mBullet.GetPos().Y > 0)
+                {
+                    mBullet.StartMovingUp();
+                }
+                else
+                {
+                    mBullet.StopMovingUp();
+                }
+            }
+
+
+
+
+        }
+
+        public void Update(float deltaTime, KeyboardState keys, int inScreenWidth , int inScreenHeight)
         {
 
             //do player specific updating:
@@ -57,11 +82,7 @@ namespace CrackerChase
             //call the update function for the mover object
             mMover.Update(1.0f / 60f);
 
-            if(mBullet != null)
-            {
-                mBullet.SetPosition(GetPos().X, GetPos().Y);
-                mBullet.StartMovingUp();
-            }
+
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -81,6 +102,10 @@ namespace CrackerChase
         {
             bHasFired = true;
 
+            if (mBullet != null)
+            {
+                mBullet.SetPosition(GetPos().X, GetPos().Y);
+            }
 
 
             //fire the bullet
