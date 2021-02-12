@@ -152,6 +152,19 @@ namespace CrackerChase
             mPlayer = new Player(
                 new Mover(screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500),
                 screenWidth, screenHeight, spaceShipTex, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500);
+
+            int numRowsOfEnemies = 5, numColsOfEnemies = 5;
+            int enemiesXPos = 100, enemiesYPos = 0;
+
+            for(int i = 0; i < numRowsOfEnemies; i++)
+            {
+                for(int j = 0; j < numColsOfEnemies; j++)
+                {
+                    mEnemies.Add(new Enemy(new Mover
+                    (screenWidth, screenHeight, spaceShipTex, spaceshipWidth, (j * 60) + enemiesXPos, (i * 60) + enemiesYPos, 500, 500),
+                    screenWidth, screenHeight, spaceShipTex, spaceshipWidth, (j * 60) + enemiesXPos, (i * 60) + enemiesYPos, 500, 500));
+                }
+            }
             mEnemies.Add(new Enemy(new Mover
                 (screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500),
                 screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500));
@@ -172,7 +185,7 @@ namespace CrackerChase
             SplashScreen splashScreen = new SplashScreen(splashImage);//create splash screen
             mSceneManager.addScene(splashScreen);//add the splash screen
 
-            GameplayScene gameTestScene = new GameplayScene(mPlayer, mEnemies, mBarricade);//create gameplay scene
+            GameplayScene gameTestScene = new GameplayScene(mPlayer, mEnemies, mBarricade, ref enemiesXPos, ref enemiesYPos);//create gameplay scene
             mSceneManager.addScene(gameTestScene);//add the scene to the manager
             
 

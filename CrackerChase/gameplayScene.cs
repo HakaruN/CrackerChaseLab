@@ -11,7 +11,7 @@ namespace CrackerChase
 {
     class GameplayScene : GameScene
     {
-        public GameplayScene(Player player, List<Enemy> enemies, List<Barricade> barricades)
+        public GameplayScene(Player player, List<Enemy> enemies, List<Barricade> barricades, ref int enemiesXPos, ref int enemiesYPos)
         {
             mPlayer = player;
             mEnemies = enemies;
