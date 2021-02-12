@@ -114,6 +114,8 @@ namespace CrackerChase
             {
                 yPosition = yPosition - (ySpeed * deltaTime);
                 //Console.WriteLine("Moving up");
+                //Console.WriteLine("Bullet moving with yspeed: {0}", ySpeed);
+                //Console.WriteLine("Bullet y pos: {0}", yPosition);
             }
             if (MovingDown)
             {
