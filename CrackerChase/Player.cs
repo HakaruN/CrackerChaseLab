@@ -20,13 +20,13 @@ namespace CrackerChase
         public Player(int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, Texture2D bulletTexture, int inDrawWidth,  float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) : base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
         {
             //init the bullet
-            mBullet = new Mover(inScreenWidth, inScreenHeight, bulletTexture, inDrawWidth, -10, -10, 0, 60);
+            mBullet = new Mover(inScreenWidth, inScreenHeight, bulletTexture, inDrawWidth, -10, -10, 0, 100);
         }
 
         public Player(Mover playerMover, int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, Texture2D bulletTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) : base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
         {
             //init the bullet
-            mBullet = new Mover(inScreenWidth, inScreenHeight, bulletTexture, inDrawWidth, -10, -10, 0, 60);
+            mBullet = new Mover(inScreenWidth, inScreenHeight, bulletTexture, inDrawWidth, -10, -10, 0, 100);
 
             mMover = playerMover;
         }
