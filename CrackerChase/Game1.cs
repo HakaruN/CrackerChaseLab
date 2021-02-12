@@ -157,7 +157,7 @@ namespace CrackerChase
                 screenWidth, screenHeight, spaceShipTex, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500,soundManager);
             mEnemies.Add(new Enemy(new Mover
                 (screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500),
-                screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500));
+                screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500,soundManager));
 
             mBarricade.Add(new Barricade(new Mover(screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 4, screenHeight - 20, 500, 500),
                 screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500));
