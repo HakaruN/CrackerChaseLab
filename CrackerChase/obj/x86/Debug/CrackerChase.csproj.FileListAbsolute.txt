@@ -31,45 +31,8 @@ D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Wind
 D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
 D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\SharpDX.XInput.xml
 D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\obj\x86\Debug\CrackerChase.csprojAssemblyReference.cache
 D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\obj\x86\Debug\CrackerChase.csproj.CoreCompileInputs.cache
 D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\obj\x86\Debug\CrackerChase.csproj.CopyComplete
 D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\obj\x86\Debug\CrackerChase.exe
 D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\obj\x86\Debug\CrackerChase.pdb
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\Content\beep1.xnb
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\Content\beep2.xnb
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\Content\Burp.xnb
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\Content\cheese.xnb
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\Content\cracker.xnb
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\Content\explosion.xnb
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\Content\laser.xnb
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\Content\MessageFont.xnb
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\Content\spaceInvaders.wma
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\Content\spaceInvaders.xnb
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\Content\SpaceShip.xnb
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\Content\splashScreen.xnb
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\Content\Tablecloth.xnb
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\CrackerChase.exe
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\CrackerChase.pdb
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\MonoGame.Framework.dll
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\SharpDX.dll
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\SharpDX.DXGI.dll
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\SharpDX.XInput.dll
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\MonoGame.Framework.xml
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\SharpDX.xml
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\SharpDX.DXGI.xml
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\SharpDX.XInput.xml
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\obj\x86\Debug\CrackerChase.csprojAssemblyReference.cache
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\obj\x86\Debug\CrackerChase.csproj.CoreCompileInputs.cache
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\obj\x86\Debug\CrackerChase.csproj.CopyComplete
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\obj\x86\Debug\CrackerChase.exe
-C:\Users\Itchy\Desktop\Space Invader\CrackerChase\obj\x86\Debug\CrackerChase.pdb
