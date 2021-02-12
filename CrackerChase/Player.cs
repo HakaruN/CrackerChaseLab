@@ -16,6 +16,7 @@ namespace CrackerChase
         Mover mBullet;
 
         bool bHasFired = false;
+        bool isOnScreen = false;
 
         public Player(int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, Texture2D bulletTexture, int inDrawWidth,  float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) : base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
         {
@@ -52,7 +53,7 @@ namespace CrackerChase
                 else
                 {
                     //Console.WriteLine("Bullet offscreen");
-                    mBullet.SetPosition(-10.0f, 0);
+                    mBullet.SetPosition(-100.0f, -100.0f);
                     return false;
                 }
             }
@@ -99,12 +100,14 @@ namespace CrackerChase
                 //if the bullet is onscreen then move the bullet up
                 mBullet.StartMovingUp();
                 bHasFired = true;
+                isOnScreen = true;
                 //Console.WriteLine("Bullet onscreen");
             }
             else
             {
                 //set has fired to false so we can fire again
                 bHasFired = false;
+                isOnScreen = false;
                 //Console.WriteLine("Bullet offscreen");
             }
 
@@ -114,10 +117,16 @@ namespace CrackerChase
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            //spriteBatch.Begin();
             mMover.Draw(spriteBatch);
-            mBullet.Draw(spriteBatch);
-            //spriteBatch.End();
+
+            //if bullet on screen, draw the bullet
+            if (isOnScreen)
+            {
+                //spriteBatch.Begin();
+                mBullet.Draw(spriteBatch);
+                //spriteBatch.End();
+            }
+            
         }
 
         //add a sprite to the sprite list
