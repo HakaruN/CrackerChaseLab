@@ -20,13 +20,13 @@ namespace CrackerChase
         public Player(int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, Texture2D bulletTexture, int inDrawWidth,  float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) : base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
         {
             //init the bullet
-            mBullet = new Mover(inScreenWidth, inScreenHeight, bulletTexture, inDrawWidth, 50, 50, 0, 0);
+            mBullet = new Mover(inScreenWidth, inScreenHeight, bulletTexture, inDrawWidth, -10, -10, 0, 0);
         }
 
         public Player(Mover playerMover, int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, Texture2D bulletTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) : base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
         {
             //init the bullet
-            mBullet = new Mover(inScreenWidth, inScreenHeight, bulletTexture, inDrawWidth, 50, 50, 0, 0);
+            mBullet = new Mover(inScreenWidth, inScreenHeight, bulletTexture, inDrawWidth, -10, -10, 0, 0);
 
             mMover = playerMover;
         }
@@ -34,19 +34,23 @@ namespace CrackerChase
         //check if bullet is onscreen
         private bool isBulletOnscreen(int inScreenWidth, int inScreenHeight)
         {
-            if(mBullet.GetPos().X < inScreenWidth || mBullet.GetPos().X > 0)
+            //Console.WriteLine("xpos: {0}, ypos: {1}", mBullet.GetPos().X, mBullet.GetPos().Y);
+
+            if (mBullet.GetPos().X < inScreenWidth && mBullet.GetPos().X > 0)
             //if its within the width of the screen
             {
-                if(mBullet.GetPos().Y < inScreenHeight || mBullet.GetPos().Y > 0)
+                if(mBullet.GetPos().Y < inScreenHeight && mBullet.GetPos().Y > 0)
                 {
+                    //Console.WriteLine("Bullet onscreen");
                     return true;
                 }
                 else
                 {
+                    //Console.WriteLine("Bullet offscreen");
                     return false;
                 }
             }
-
+            //Console.WriteLine("Bullet offscreen");
             return false;
         }
 
@@ -82,21 +86,22 @@ namespace CrackerChase
 
 
 
-            if(mBullet != null)
+            //update the bullet
+            Console.WriteLine("xpos: {0}, ypos: {1}", mBullet.GetPos().X, mBullet.GetPos().Y);
+            if (isBulletOnscreen(inScreenWidth, inScreenHeight))
             {
-                if (isBulletOnscreen(inScreenWidth, inScreenHeight))
-                {
-                    //if the bullet is onscreen then move the bullet up
-                    mBullet.StartMovingUp();
-                    bHasFired = true;
-                }
-                else
-                {
-                    //set has fired to false so we can fire again
-                    bHasFired = false;
-                }
-                
+                //if the bullet is onscreen then move the bullet up
+                mBullet.StartMovingUp();
+                bHasFired = true;
+                Console.WriteLine("Bullet onscreen");
             }
+            else
+            {
+                //set has fired to false so we can fire again
+                bHasFired = false;
+                Console.WriteLine("Bullet offscreen");
+            }
+
 
 
         }
@@ -116,13 +121,10 @@ namespace CrackerChase
 
         public void fireGun()
         {
-            bHasFired = true;
+            //bHasFired = true;
 
-            if (mBullet != null)
-            {
-                mBullet.SetPosition(mMover.GetPos().X, mMover.GetPos().Y);
-                mBullet.StartMovingUp();
-            }
+            mBullet.SetPosition(mMover.GetPos().X, mMover.GetPos().Y);
+            //mBullet.StartMovingUp();
 
             //fire the bullet
 
