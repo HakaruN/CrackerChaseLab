@@ -31,6 +31,11 @@ namespace CrackerChase
             mMover = playerMover;
         }
 
+        public Mover getBullet()
+        {
+            return mBullet;
+        }
+
         //check if bullet is onscreen
         private bool isBulletOnscreen(int inScreenWidth, int inScreenHeight)
         {
