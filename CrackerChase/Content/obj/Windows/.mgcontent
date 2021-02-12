@@ -4,17 +4,17 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Hakaru/Documents/spaceInvaders2/CrackerChaseLab/CrackerChase/Content/beep1.wav</File>
-    <File>C:/Users/Hakaru/Documents/spaceInvaders2/CrackerChaseLab/CrackerChase/Content/beep2.wav</File>
-    <File>C:/Users/Hakaru/Documents/spaceInvaders2/CrackerChaseLab/CrackerChase/Content/Burp.wav</File>
-    <File>C:/Users/Hakaru/Documents/spaceInvaders2/CrackerChaseLab/CrackerChase/Content/cheese.png</File>
-    <File>C:/Users/Hakaru/Documents/spaceInvaders2/CrackerChaseLab/CrackerChase/Content/cracker.png</File>
-    <File>C:/Users/Hakaru/Documents/spaceInvaders2/CrackerChaseLab/CrackerChase/Content/explosion.wav</File>
-    <File>C:/Users/Hakaru/Documents/spaceInvaders2/CrackerChaseLab/CrackerChase/Content/laser.wav</File>
-    <File>C:/Users/Hakaru/Documents/spaceInvaders2/CrackerChaseLab/CrackerChase/Content/MessageFont.spritefont</File>
-    <File>C:/Users/Hakaru/Documents/spaceInvaders2/CrackerChaseLab/CrackerChase/Content/spaceInvaders.mp3</File>
-    <File>C:/Users/Hakaru/Documents/spaceInvaders2/CrackerChaseLab/CrackerChase/Content/Tablecloth.png</File>
-    <File>C:/Users/Hakaru/Documents/spaceInvaders2/CrackerChaseLab/CrackerChase/Content/SpaceShip.png</File>
-    <File>C:/Users/Hakaru/Documents/spaceInvaders2/CrackerChaseLab/CrackerChase/Content/splashScreen.jpg</File>
+    <File>D:/Work/Year 5-Masters/Development Project/CrackerChaseLab/CrackerChase/Content/beep1.wav</File>
+    <File>D:/Work/Year 5-Masters/Development Project/CrackerChaseLab/CrackerChase/Content/beep2.wav</File>
+    <File>D:/Work/Year 5-Masters/Development Project/CrackerChaseLab/CrackerChase/Content/Burp.wav</File>
+    <File>D:/Work/Year 5-Masters/Development Project/CrackerChaseLab/CrackerChase/Content/cheese.png</File>
+    <File>D:/Work/Year 5-Masters/Development Project/CrackerChaseLab/CrackerChase/Content/cracker.png</File>
+    <File>D:/Work/Year 5-Masters/Development Project/CrackerChaseLab/CrackerChase/Content/explosion.wav</File>
+    <File>D:/Work/Year 5-Masters/Development Project/CrackerChaseLab/CrackerChase/Content/laser.wav</File>
+    <File>D:/Work/Year 5-Masters/Development Project/CrackerChaseLab/CrackerChase/Content/MessageFont.spritefont</File>
+    <File>D:/Work/Year 5-Masters/Development Project/CrackerChaseLab/CrackerChase/Content/spaceInvaders.mp3</File>
+    <File>D:/Work/Year 5-Masters/Development Project/CrackerChaseLab/CrackerChase/Content/Tablecloth.png</File>
+    <File>D:/Work/Year 5-Masters/Development Project/CrackerChaseLab/CrackerChase/Content/SpaceShip.png</File>
+    <File>D:/Work/Year 5-Masters/Development Project/CrackerChaseLab/CrackerChase/Content/splashScreen.jpg</File>
   </SourceFiles>
 </SourceFileCollection>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Hakaru/Documents/spaceInvaders2/CrackerChaseLab/CrackerChase/Content/spaceInvaders.mp3</SourceFile>
-  <SourceTime>2021-02-08T12:58:10.862782+00:00</SourceTime>
-  <DestFile>C:/Users/Hakaru/Documents/spaceInvaders2/CrackerChaseLab/CrackerChase/Content/bin/Windows/spaceInvaders.xnb</DestFile>
-  <DestTime>2021-02-08T12:58:27.748289+00:00</DestTime>
+  <SourceFile>D:/Work/Year 5-Masters/Development Project/CrackerChaseLab/CrackerChase/Content/spaceInvaders.mp3</SourceFile>
+  <SourceTime>2021-02-12T10:12:17.4830877+00:00</SourceTime>
+  <DestFile>D:/Work/Year 5-Masters/Development Project/CrackerChaseLab/CrackerChase/Content/bin/Windows/spaceInvaders.xnb</DestFile>
+  <DestTime>2021-02-12T10:12:52.237429+00:00</DestTime>
   <Importer>Mp3Importer</Importer>
   <ImporterTime>2017-03-01T15:05:36+00:00</ImporterTime>
   <Processor>SongProcessor</Processor>
@@ -15,6 +15,6 @@
   <Dependencies />
   <BuildAsset />
   <BuildOutput>
-    <string>C:/Users/Hakaru/Documents/spaceInvaders2/CrackerChaseLab/CrackerChase/Content/bin/Windows/spaceInvaders.wma</string>
+    <string>D:/Work/Year 5-Masters/Development Project/CrackerChaseLab/CrackerChase/Content/bin/Windows/spaceInvaders.wma</string>
   </BuildOutput>
 </PipelineBuildEvent>

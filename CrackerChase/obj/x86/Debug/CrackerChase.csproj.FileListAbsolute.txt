@@ -36,3 +36,41 @@ C:\Users\Hakaru\Documents\spaceInvaders2\CrackerChaseLab\CrackerChase\obj\x86\De
 C:\Users\Hakaru\Documents\spaceInvaders2\CrackerChaseLab\CrackerChase\obj\x86\Debug\CrackerChase.csprojAssemblyReference.cache
 C:\Users\Hakaru\Documents\spaceInvaders2\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\Content\SpaceShip.xnb
 C:\Users\Hakaru\Documents\spaceInvaders2\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\Content\splashScreen.xnb
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\Content\beep1.xnb
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\Content\beep2.xnb
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\Content\Burp.xnb
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\Content\cheese.xnb
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\Content\cracker.xnb
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\Content\explosion.xnb
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\Content\laser.xnb
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\Content\MessageFont.xnb
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\Content\spaceInvaders.wma
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\Content\spaceInvaders.xnb
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\Content\SpaceShip.xnb
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\Content\splashScreen.xnb
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\Content\Tablecloth.xnb
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\CrackerChase.exe
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\CrackerChase.pdb
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\MonoGame.Framework.dll
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\SharpDX.dll
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\SharpDX.XInput.dll
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\MonoGame.Framework.xml
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\SharpDX.xml
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\SharpDX.XInput.xml
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\obj\x86\Debug\CrackerChase.csprojAssemblyReference.cache
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\obj\x86\Debug\CrackerChase.csproj.CoreCompileInputs.cache
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\obj\x86\Debug\CrackerChase.csproj.CopyComplete
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\obj\x86\Debug\CrackerChase.exe
+D:\Work\Year 5-Masters\Development Project\CrackerChaseLab\CrackerChase\obj\x86\Debug\CrackerChase.pdb
