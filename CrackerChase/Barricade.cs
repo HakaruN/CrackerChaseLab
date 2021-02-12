@@ -9,5 +9,10 @@ namespace CrackerChase
 
     class Barricade
     {
+        
+
+
+
+
     }
 }
