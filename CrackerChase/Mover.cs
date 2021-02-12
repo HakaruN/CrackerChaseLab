@@ -103,22 +103,22 @@ namespace CrackerChase
             if (MovingLeft)
             {
                 xPosition = xPosition - (xSpeed * deltaTime);
-                Console.WriteLine("Moving left");
+                //Console.WriteLine("Moving left");
             }
             if (MovingRight)
             {
                 xPosition = xPosition + (xSpeed * deltaTime);
-                Console.WriteLine("Moving right");
+                //Console.WriteLine("Moving right");
             }
             if (MovingUp)
             {
                 yPosition = yPosition - (ySpeed * deltaTime);
-                Console.WriteLine("Moving up");
+                //Console.WriteLine("Moving up");
             }
             if (MovingDown)
             {
                 yPosition = yPosition + (ySpeed * deltaTime);
-                Console.WriteLine("Moving down");
+                //Console.WriteLine("Moving down");
             }
 
             if (xPosition < 0)

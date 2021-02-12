@@ -50,7 +50,7 @@ namespace CrackerChase
             rectangle.X = (int)Math.Round(xPosition);
             rectangle.Y = (int)Math.Round(yPosition);
             spriteBatch.Draw(texture, rectangle, Color.White);
-            Console.WriteLine("xpos: {0}, ypos: {1}", xPosition, yPosition);
+            //Console.WriteLine("xpos: {0}, ypos: {1}", xPosition, yPosition);
         }
 
         public virtual void Update(float deltaTime)
