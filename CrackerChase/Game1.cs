@@ -155,9 +155,19 @@ namespace CrackerChase
             mPlayer = new Player(
                 new Mover(screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500),
                 screenWidth, screenHeight, spaceShipTex, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500,soundManager);
-            mEnemies.Add(new Enemy(new Mover
-                (screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500),
-                screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500));
+
+            int numEnemyRows = 5, numEnemiyCols = 5;
+            int enemyPosX = 0, enemyPosY = 0;
+            int enemySpacingX = 50, enemySpacingY = 50;//space between enemies (num pixels)
+            for (int i = 0; i < numEnemiyCols; i++)
+            {
+                for (int j = 0; j < numEnemyRows; j++)
+                {
+                    mEnemies.Add(new Enemy(new Mover
+                    (screenWidth, screenHeight, spaceShipTex, spaceshipWidth, i * (enemyPosX + enemySpacingX), j * (enemyPosY + enemySpacingY) + 25, 500, 500),
+                    screenWidth, screenHeight, spaceShipTex, spaceshipWidth, i * (enemyPosX + enemySpacingX), j * (enemyPosY + enemySpacingY) + 25, 500, 500));
+                }
+            }
 
             mBarricade.Add(new Barricade(new Mover(screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 4, screenHeight - 20, 500, 500),
                 screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500));
@@ -175,7 +185,7 @@ namespace CrackerChase
             SplashScreen splashScreen = new SplashScreen(splashImage);//create splash screen
             mSceneManager.addScene(splashScreen);//add the splash screen
 
-            GameplayScene gameTestScene = new GameplayScene(mPlayer, mEnemies, mBarricade);//create gameplay scene
+            GameplayScene gameTestScene = new GameplayScene(mPlayer, mEnemies, mBarricade, ref enemyPosX, ref enemyPosY);//create gameplay scene
             mSceneManager.addScene(gameTestScene);//add the scene to the manager
 
           
