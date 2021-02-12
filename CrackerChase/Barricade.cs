@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace CrackerChase
 {
+
     class Barricade
     {
     }

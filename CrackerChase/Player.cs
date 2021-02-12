@@ -56,12 +56,6 @@ namespace CrackerChase
 
             //call the update function for the mover object
             mMover.Update(1.0f / 60f);
-
-            if(mBullet != null)
-            {
-                mBullet.SetPosition(mMover.GetPos());
-                mBullet.StartMovingUp();
-            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -81,7 +75,11 @@ namespace CrackerChase
         {
             bHasFired = true;
 
-
+            if (mBullet != null)
+            {
+                mBullet.SetPosition(mMover.GetPos().X, mMover.GetPos().Y);
+                mBullet.StartMovingUp();
+            }
 
             //fire the bullet
 
