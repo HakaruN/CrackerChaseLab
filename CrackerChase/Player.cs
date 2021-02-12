@@ -9,105 +9,190 @@ using System.Text;
 
 namespace CrackerChase
 {
-    class Player : Game
+    class Player : Mover
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        //members
+        Mover mMover;//the mover that represents the player        
 
-        List<Sprite> gameSprites = new List<Sprite>();
-
-        SpriteFont messageFont;
-
-        string messageString = "Hello world";
-
-        Mover mainPlayer;
-
-        int screenWidth;
-        int screenHeight;
-
-        bool bHasFired = false;
-
-        public Player()
+        public Player(int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) : base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
         {
-            graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
+
         }
 
-        protected override void LoadContent()
+        public Player(Mover playerMover, int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) : base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-            messageFont = Content.Load<SpriteFont>("MessageFont");
-
-            screenWidth = GraphicsDevice.Viewport.Width;
-            screenHeight = GraphicsDevice.Viewport.Height;
-
-            Texture2D mainPlayerTexture = Content.Load<Texture2D>("mainPlayer");
-            gameSprites.Add(mainPlayer);
-
-            int mainPlayerWidth = screenWidth / 15;
-
-            mainPlayer = new Mover(screenWidth, screenHeight, mainPlayerTexture, mainPlayerWidth, screenWidth / 2, screenHeight / 2, 500, 500);
+            mMover = playerMover;
         }
 
-        public new void Update(GameTime gameTime)
+        public void Update(float deltaTime, KeyboardState keys)
         {
-            KeyboardState keys = Keyboard.GetState();
 
-
-            if(keys.IsKeyDown(Keys.Left))
+            //do player specific updating:
+            if (keys.IsKeyDown(Keys.Left))
             {
-                mainPlayer.StopMovingLeft();
+                mMover.StartMovingLeft();
             }
             else
             {
-                mainPlayer.StopMovingLeft();
+                mMover.StopMovingLeft();
             }
 
-            if(keys.IsKeyDown(Keys.Right))
+            if (keys.IsKeyDown(Keys.Right))
             {
-                mainPlayer.StartMovingRight();
+                mMover.StartMovingRight();
             }
             else
             {
-                mainPlayer.StopMovingRight();
+                mMover.StopMovingRight();
             }
 
-            if(keys.IsKeyDown(Keys.Space) && !bHasFired)
+            if (keys.IsKeyDown(Keys.Space))
             {
-                Fire();
-            }
+                fireGun();
+            }            
 
-            foreach (Sprite s in gameSprites)
-            {
-                s.Update(1.0f / 60.0f);
-            }
-
-            base.Update(gameTime);
+            //call the update function for the mover object
+            mMover.Update(1.0f / 60f);
         }
 
-        void Fire()
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            bHasFired = true;
+            //spriteBatch.Begin();
+            mMover.Draw(spriteBatch);            
+            //spriteBatch.End();
         }
-        public new void Draw(GameTime gameTime)
+
+        //add a sprite to the sprite list
+        public void addSprite(Mover m)
         {
+            mMover = m;
+        }
+
+        public void fireGun()
+        {
+            //TODO:
+            //check if there is a bullet on screen
+
+            //fire the bullet
+
+            //play sound
+
+        }
+
+
+        /*
+        class Player : Game
+        {
+<<<<<<< HEAD
+            GraphicsDeviceManager graphics;
+            SpriteBatch spriteBatch;
+
+            List<Sprite> gameSprites = new List<Sprite>();
+=======
             spriteBatch.Begin();
+>>>>>>> master
 
-            foreach (Sprite s in gameSprites)
+            SpriteFont messageFont;
+
+            string messageString = "Hello world";
+
+            Mover mainPlayer;
+
+            int screenWidth;
+            int screenHeight;
+
+            bool bHasFired = false;
+
+            public Player()
             {
-                s.Draw(spriteBatch);
+                graphics = new GraphicsDeviceManager(this);
+                Content.RootDirectory = "Content";
             }
-            float xPos = (screenWidth - messageFont.MeasureString(messageString).X) / 2;
 
-            Vector2 statusPos = new Vector2(xPos, 10);
+            protected override void LoadContent()
+            {
+                spriteBatch = new SpriteBatch(GraphicsDevice);
+                messageFont = Content.Load<SpriteFont>("MessageFont");
 
-            spriteBatch.DrawString(messageFont, messageString, statusPos, Color.Red);
+                screenWidth = GraphicsDevice.Viewport.Width;
+                screenHeight = GraphicsDevice.Viewport.Height;
 
-            spriteBatch.End();
+                Texture2D mainPlayerTexture = Content.Load<Texture2D>("mainPlayer");
+                gameSprites.Add(mainPlayer);
 
+<<<<<<< HEAD
+                int mainPlayerWidth = screenWidth / 15;
+
+                mainPlayer = new Mover(screenWidth, screenHeight, mainPlayerTexture, mainPlayerWidth, screenWidth / 2, screenHeight / 2, 500, 500);
+            }
+=======
             base.Draw(gameTime);
         }
     }
+>>>>>>> master
+
+            public new void Update(GameTime gameTime)
+            {
+                KeyboardState keys = Keyboard.GetState();
 
 
+                if(keys.IsKeyDown(Keys.Left))
+                {
+                    mainPlayer.StopMovingLeft();
+                }
+                else
+                {
+                    mainPlayer.StopMovingLeft();
+                }
+
+                if(keys.IsKeyDown(Keys.Right))
+                {
+                    mainPlayer.StartMovingRight();
+                }
+                else
+                {
+                    mainPlayer.StopMovingRight();
+                }
+
+                if(keys.IsKeyDown(Keys.Space) && !bHasFired)
+                {
+                    Fire();
+                }
+
+                foreach (Sprite s in gameSprites)
+                {
+                    s.Update(1.0f / 60.0f);
+                }
+
+                base.Update(gameTime);
+            }
+
+            void Fire()
+            {
+                bHasFired = true;
+            }
+            public new void Draw(GameTime gameTime)
+            {
+
+                spriteBatch.Begin();
+
+                foreach (Sprite s in gameSprites)
+                {
+                    s.Draw(spriteBatch);
+                }
+                float xPos = (screenWidth - messageFont.MeasureString(messageString).X) / 2;
+
+                Vector2 statusPos = new Vector2(xPos, 10);
+
+                spriteBatch.DrawString(messageFont, messageString, statusPos, Color.Red);
+
+                spriteBatch.End();
+
+
+                base.Draw(gameTime);
+            }
+        }
+        */
+
+    }
 }

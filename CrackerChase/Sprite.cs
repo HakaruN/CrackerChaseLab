@@ -7,10 +7,13 @@ namespace CrackerChase
     class Sprite
     {
 
-        protected int screenWidth;
-        protected int screenHeight;
+        protected int screenWidth { get; }
+        public int getScreenWidth() { return screenWidth; }
+        protected int screenHeight { get; }
+        public int getScreenHeight() { return screenHeight; }
 
         protected Texture2D texture;
+        public Texture2D getTexture() { return texture; }
         protected Rectangle rectangle;
 
         protected float xPosition;
@@ -21,10 +24,11 @@ namespace CrackerChase
 
         public Sprite(int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY)
         {
+            texture = inSpriteTexture;
 
             screenWidth = inScreenWidth;
             screenHeight = inScreenHeight;
-            texture = inSpriteTexture;
+
             xResetPosition = inResetX;
             yResetPosition = inResetY;
 
@@ -46,6 +50,7 @@ namespace CrackerChase
             rectangle.X = (int)Math.Round(xPosition);
             rectangle.Y = (int)Math.Round(yPosition);
             spriteBatch.Draw(texture, rectangle, Color.White);
+            Console.WriteLine("xpos: {0}, ypos: {1}", xPosition, yPosition);
         }
 
         public virtual void Update(float deltaTime)

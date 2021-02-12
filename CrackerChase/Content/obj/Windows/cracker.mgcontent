@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-<<<<<<< HEAD
-  <SourceFile>C:/Users/Hakaru/Documents/spaceInvaders/CrackerChaseLab/CrackerChase/Content/cracker.png</SourceFile>
-  <SourceTime>2021-02-08T12:06:10.3946203+00:00</SourceTime>
-  <DestFile>C:/Users/Hakaru/Documents/spaceInvaders/CrackerChaseLab/CrackerChase/Content/bin/Windows/cracker.xnb</DestFile>
-  <DestTime>2021-02-08T12:39:47.5991199+00:00</DestTime>
-=======
-  <SourceFile>C:/Users/Itchy/Desktop/Space Invader/CrackerChase/Content/cracker.png</SourceFile>
-  <SourceTime>2021-02-08T10:30:10.1137423+00:00</SourceTime>
-  <DestFile>C:/Users/Itchy/Desktop/Space Invader/CrackerChase/Content/bin/Windows/cracker.xnb</DestFile>
-  <DestTime>2021-02-08T12:33:53.1962364+00:00</DestTime>
->>>>>>> 920c65bb79c9bdd9024e5550e9d5e825fb56a6da
+  <SourceFile>C:/Users/Hakaru/Documents/spaceInvaders2/CrackerChaseLab/CrackerChase/Content/cracker.png</SourceFile>
+  <SourceTime>2021-02-08T12:58:10.8417767+00:00</SourceTime>
+  <DestFile>C:/Users/Hakaru/Documents/spaceInvaders2/CrackerChaseLab/CrackerChase/Content/bin/Windows/cracker.xnb</DestFile>
+  <DestTime>2021-02-08T12:58:26.1826607+00:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T15:05:36+00:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
