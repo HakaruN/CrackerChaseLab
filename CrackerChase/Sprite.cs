@@ -7,8 +7,6 @@ namespace CrackerChase
     class Sprite
     {
 
-
-
         protected Texture2D texture;
         public Texture2D getTexture() { return texture; }
         protected Rectangle rectangle;

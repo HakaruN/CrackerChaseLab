@@ -19,65 +19,30 @@ namespace CrackerChase
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-
-        // Game World
         // These variables define the world 
         int screenWidth;
         int screenHeight;
 
         //scene manager
         SceneManager mSceneManager;
-        //player
-        Player mPlayer;
-        Enemy mEnemy;
-
-        List<Enemy> mEnemies;
+        //content manager/store
+        ContentStore mContentStore;
+        //sound manager
         SoundManager mSoundManager;
+
+        //TODO: remove from here and add directly to the scene that needs the players, enemies and barricades
+        Player mPlayer;
+        List<Enemy> mEnemies;
         List<Barricade> mBarricade;
-        //legacy crap
-        //Mover cheese;
-        //Target cracker;
-        //Sprite background;
-        //SoundEffect BurpSound;
 
-
-
-        //List<Sprite> gameSprites = new List<Sprite>();
-        //List<Target> crackers = new List<Target>();
-
-        //SpriteFont messageFont;
-
-        //string messageString = "Hello world";
-
-        //int score;
-        //int timer;
-
-        //bool playing;
 
 
         void startPlayingGame()
         {
-            /*
-            foreach (Sprite s in gameSprites)
-            {
-                s.Reset();
-            }
-            foreach (Target t in crackers)
-            {
-                t.Reset();
-            }
-            messageString = "Cracker Chase";
-            
-            playing = true;
-            timer = 600;
-            score = 0;
-            */
-
             bool isRunning = false;
             GameTime gameTime1 = new GameTime();
             while (isRunning)
-            {
-                
+            {                
                 this.Update(gameTime1);
             }
            
@@ -94,6 +59,7 @@ namespace CrackerChase
             mSoundManager = new SoundManager(Content);
             //init content
             Content.RootDirectory = "Content";
+            mContentStore = new ContentStore(Content);
 
         }
 
@@ -122,32 +88,31 @@ namespace CrackerChase
             screenHeight = GraphicsDevice.Viewport.Height;
 
             //load sounds
-            SoundEffect gunfireSound = Content.Load<SoundEffect>("laser");
-            Song backGroundMusic = Content.Load<Song>("spaceInvaders");
-            mSoundManager.playSong(backGroundMusic);
-           
+            mContentStore.addSoundEffect("laser");
+            mContentStore.addSong("spaceInvaders");
+            mSoundManager.playSong(mContentStore.getSong("spaceInvaders"));
+
 
             //init the enemies list
             mEnemies = new List<Enemy>();
             mBarricade = new List<Barricade>();
 
-            
             //Enemy texture
-            Texture2D alien1Tex = Content.Load<Texture2D>("Alien1");
+            mContentStore.addTexture("Alien1");
             //space ship texture
-            Texture2D spaceShipTex = Content.Load<Texture2D>("SpaceShip");
+            mContentStore.addTexture("SpaceShip");
             int spaceshipWidth = screenWidth / 25;
             //barricade texture
-            Texture2D barricadeTex = Content.Load<Texture2D>("block");
+            mContentStore.addTexture("block");
             int barricadeWidth = 10;
             //bullet texture
-            Texture2D bulletTex = Content.Load<Texture2D>("bullet");
+            mContentStore.addTexture("bullet");
             int bulletWidth = screenWidth / 20;
 
 
             
             //add player with a new mover
-            mPlayer = new Player(spaceShipTex, spaceShipTex, bulletWidth, screenWidth / 2, screenHeight - 20, 500, 500, gunfireSound);
+            mPlayer = new Player(mContentStore.getTexture("SpaceShip"), mContentStore.getTexture("SpaceShip"), bulletWidth, screenWidth / 2, screenHeight - 20, 500, 500, mContentStore.GetSoundEffect("laser"));
 
             //add enemies
             int numEnemyRows = 3, numEnemiyCols = 5;
@@ -158,7 +123,7 @@ namespace CrackerChase
             {
                 for (int j = 0; j < numEnemyRows; j++)
                 {
-                    mEnemies.Add(new Enemy(alien1Tex, spaceshipWidth, enemyPosX + (i * enemySpacingX), enemyPosY + (j * enemySpacingY), 500, 500, mSoundManager));
+                    mEnemies.Add(new Enemy(mContentStore.getTexture("Alien1"), spaceshipWidth, enemyPosX + (i * enemySpacingX), enemyPosY + (j * enemySpacingY), 500, 500, mSoundManager));
                 }
             }
 
@@ -168,7 +133,7 @@ namespace CrackerChase
             int barricadeSpacing = 150;
             for (int i = 0; i < numBarricades; i++)
             {
-                mBarricade.Add(new Barricade(barricadeTex, barricadeWidth, i * barricadeSpacing + barricadeOffset, screenHeight * 0.8f));
+                mBarricade.Add(new Barricade(mContentStore.getTexture("block"), barricadeWidth, i * barricadeSpacing + barricadeOffset, screenHeight * 0.8f));
             }
 
 
