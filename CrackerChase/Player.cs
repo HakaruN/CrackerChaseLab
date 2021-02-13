@@ -11,39 +11,30 @@ namespace CrackerChase
 {
     class Player : Mover
     {
-        //members:
-
         //bullet
         Bullet mBullet;
 
-        //gunfire sound
-        SoundEffect mGunFire;
-
         //bullet properties (TODO: abstract bullet to own class)
         bool bHasFired = false;
-        public bool isOnScreen = false;
+        public bool isBulletOnScreen = false;
 
 
-
-        public Player(Texture2D inSpriteTexture, Texture2D bulletTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed, SoundEffect gunFire)
-            : base(inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
+        public Player(ContentStore content, string playerTexName, string bulletTexName, string bulletSoundName, float defaultXPos, float defaultYPos, float inDefaultXSpeed, float inDefaultYSpeed, int spriteWidth, int spriteHeight)
+            : base(content, playerTexName, defaultXPos, defaultYPos, inDefaultXSpeed, inDefaultYSpeed, spriteWidth, spriteHeight)
         {
             //init the bullet
-            mBullet = new Bullet(bulletTexture, inDrawWidth, -10, -10, 0, 500);
-            //gun sound
-            mGunFire = gunFire;
+            int[] bulletDimentions = { 30, 50 };
+            mBullet = new Bullet(content, bulletTexName, bulletSoundName, 50, 50, 0, 400, bulletDimentions[0], bulletDimentions[1]);
         }
 
-        public Mover getBullet()
+        public Bullet getBullet()
         {
             return mBullet;
-        }
-
-       
+        }       
 
         public void Update(float deltaTime, KeyboardState keys, int inScreenWidth , int inScreenHeight, SoundManager soundManager)
         {
-
+            Console.WriteLine("player xPos: {0}", this.mXPos);
             //do player specific updating:
             if (keys.IsKeyDown(Keys.Left) || (keys.IsKeyDown(Keys.A)))
             {
@@ -57,6 +48,7 @@ namespace CrackerChase
             if (keys.IsKeyDown(Keys.Right) || (keys.IsKeyDown(Keys.D)))
             {
                 this.StartMovingRight();
+
             }
             else
             {
@@ -68,24 +60,23 @@ namespace CrackerChase
                 fireGun(soundManager);
             }            
 
-            //call the update function for the mover object
+            //call the update function for the mover object of the player
             base.Update(1.0f / 60f);
-            mBullet.Update(1.0f / 60f);
 
 
             //update the bullet
-            if (mBullet.isOnscreen(inScreenWidth, inScreenHeight))
+            mBullet.Update(1.0f / 60f);
+            isBulletOnScreen = mBullet.isOnscreen(inScreenWidth, inScreenHeight);
+            if (isBulletOnScreen)
             {
-                //if the bullet is onscreen then move the bullet up
+                //if the bullet is onscreen then move the bullet up and set the fired flag so we cant fire again
                 mBullet.StartMovingUp();
                 bHasFired = true;
-                isOnScreen = true;
             }
             else
             {
                 //set has fired to false so we can fire again
                 bHasFired = false;
-                isOnScreen = false;
             }
 
         }
@@ -94,14 +85,8 @@ namespace CrackerChase
         {
             base.Draw(spriteBatch);
 
-            //if bullet on screen, draw the bullet
-            if (isOnScreen)
-            {
-                //spriteBatch.Begin();
-                mBullet.Draw(spriteBatch);
-                //spriteBatch.End();
-            }
-            
+            if(isBulletOnScreen)
+                mBullet.Draw(spriteBatch);            
         }
 
 
@@ -112,7 +97,7 @@ namespace CrackerChase
             mBullet.SetPosition(this.GetPos().X, this.GetPos().Y);
 
             //play sound
-            soundManager.playSound(mGunFire);
+            soundManager.playSound(mBullet.getGunfireSound());
         }
 
 

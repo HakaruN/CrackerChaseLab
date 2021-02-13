@@ -15,7 +15,8 @@ namespace CrackerChase
         bool bIsGone = false;
         public int barricadeHealth = 5;
 
-        public Barricade(Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY) : base(inSpriteTexture, inDrawWidth, inResetX, inResetY)
+        public Barricade(ContentStore content, string texName, float defaultXPos, float defaultYPos, int spriteWidth, int spriteHeight)
+            : base(content, texName, defaultXPos, defaultYPos, spriteWidth, spriteHeight)
         {
 
         }

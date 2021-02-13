@@ -30,8 +30,6 @@ namespace CrackerChase
 
 
             //calc enemy movements
-            
-            Console.WriteLine("Num steps so far {0}", numStepsSoFar);
             if (numStepsSoFar >= numStepsPerRow)
             {
                 numStepsSoFar = 0;//reset the number of steps

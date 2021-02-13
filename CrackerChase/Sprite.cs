@@ -7,44 +7,46 @@ namespace CrackerChase
     class Sprite
     {
 
-        protected Texture2D texture;
-        public Texture2D getTexture() { return texture; }
-        protected Rectangle rectangle;
+        protected Texture2D mTexture;
+        protected ContentStore mContentStore;
+        public Texture2D getTexture() { return mTexture; }
+        protected Rectangle mRectangle;
 
-        protected float xPosition;
-        protected float yPosition;
+        protected float mXPos, mYPos;
 
-        protected float xResetPosition;
-        protected float yResetPosition;
 
-        public Sprite(Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY)
+        public Sprite(ContentStore content, string texName, float defaultXPos, float defaultYPos, int spriteWidth, int spriteHeight)
         {
-            texture = inSpriteTexture;
+            //assign and load content
+            mContentStore = content;
+            mTexture = mContentStore.getTexture(texName);
 
+            //cal aspect ratio and dimensions
+            //float aspect = mTexture.Width / mTexture.Height;
+            //int height = (int)Math.Round(inDrawWidth * aspect);
 
-
-            xResetPosition = inResetX;
-            yResetPosition = inResetY;
-
-            float aspect = inSpriteTexture.Width / inSpriteTexture.Height;
-            int height = (int)Math.Round(inDrawWidth * aspect);
-            rectangle = new Rectangle(0, 0, inDrawWidth, height);
-
-            Reset();
+            //generate a rectangle with the dimentions of the texture
+            mRectangle = new Rectangle(0, 0, spriteWidth, spriteHeight);
+            Console.WriteLine();
+            SetPosition(defaultXPos, defaultYPos);
         }
 
         public void SetPosition(float x, float y)
         {
-            xPosition = (int)Math.Round(x);
-            yPosition = (int)Math.Round(y);
+            mXPos = (int)Math.Round(x);
+            mYPos = (int)Math.Round(y);
+        }
+        public void offsetPosition(float xOffset, float yOffset)
+        {
+            mXPos += xOffset;
+            mYPos += yOffset;
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            rectangle.X = (int)Math.Round(xPosition);
-            rectangle.Y = (int)Math.Round(yPosition);
-            spriteBatch.Draw(texture, rectangle, Color.White);
-            //Console.WriteLine("xpos: {0}, ypos: {1}", xPosition, yPosition);
+            mRectangle.X = (int)Math.Round(mXPos);
+            mRectangle.Y = (int)Math.Round(mYPos);
+            spriteBatch.Draw(mTexture, mRectangle, Color.White);
         }
 
         public virtual void Update(float deltaTime)
@@ -52,26 +54,12 @@ namespace CrackerChase
 
         }
 
-        public void SetResetPosition(float x, float y)
-        {
-            xResetPosition = x;
-            yResetPosition = y;
-        }
-        public void offsetPosition(float xOffset, float yOffset)
-        {
-            xPosition += xOffset;
-            yPosition += yOffset;
-        }
 
-        public virtual void Reset()
-        {
-            SetPosition(xResetPosition, yResetPosition);
-        }
 
         public Vector2 GetCentre()
         {
-            float x = xPosition + rectangle.Width / 2;
-            float y = yPosition + rectangle.Height / 2;
+            float x = mXPos + mRectangle.Width / 2;
+            float y = mYPos + mRectangle.Height / 2;
             return new Vector2(x, y);
         }
 
@@ -86,17 +74,17 @@ namespace CrackerChase
 
         public bool IntersectsWith(Sprite s)
         {
-            return rectangle.Intersects(s.rectangle);
+            return mRectangle.Intersects(s.mRectangle);
         }
 
         //check if the sprite is onscreen
         public virtual bool isOnscreen(int inScreenWidth, int inScreenHeight)
         {
 
-            if (xPosition < inScreenWidth && xPosition > 0)
+            if (mXPos < inScreenWidth && mXPos > 0)
             {
                 //within the width of the screen
-                if (yPosition < inScreenHeight && yPosition > 0)
+                if (mYPos < inScreenHeight && mYPos > 0)
                 {
                     //within the height of the screen
                     return true;

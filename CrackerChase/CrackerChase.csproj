@@ -60,7 +60,6 @@
     <Compile Include="SoundManager.cs" />
     <Compile Include="splashScreen.cs" />
     <Compile Include="Sprite.cs" />
-    <Compile Include="Target.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

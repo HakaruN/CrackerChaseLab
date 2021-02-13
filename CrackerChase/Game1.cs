@@ -88,63 +88,77 @@ namespace CrackerChase
             screenHeight = GraphicsDevice.Viewport.Height;
 
             //load sounds
-            mContentStore.addSoundEffect("laser");
-            mContentStore.addSong("spaceInvaders");
-            mSoundManager.playSong(mContentStore.getSong("spaceInvaders"));
+            string gunSound = "laser";
+            string backgroundSong = "spaceInvaders";
+            mContentStore.addSoundEffect(gunSound);
+            mContentStore.addSong(backgroundSong);
+            mSoundManager.playSong(mContentStore.getSong(backgroundSong));
+
+            //fonts
+            mContentStore.addSpriteFont("MessageFont");
 
 
             //init the enemies list
             mEnemies = new List<Enemy>();
             mBarricade = new List<Barricade>();
 
+            //splash screen texture
+            string splashScreenTex = "splashScreen";
+            mContentStore.addTexture(splashScreenTex);
             //Enemy texture
-            mContentStore.addTexture("Alien1");
+            string enemyTexture = "Alien1";
+            mContentStore.addTexture(enemyTexture);
             //space ship texture
-            mContentStore.addTexture("SpaceShip");
+            string spaceShipTexture = "SpaceShip";
+            mContentStore.addTexture(spaceShipTexture);
             int spaceshipWidth = screenWidth / 25;
             //barricade texture
-            mContentStore.addTexture("block");
+            string barricateTexture = "block";
+            mContentStore.addTexture(barricateTexture);
             int barricadeWidth = 10;
             //bullet texture
-            mContentStore.addTexture("bullet");
+            string bulletTexture = "bullet";
+            mContentStore.addTexture(bulletTexture);
             int bulletWidth = screenWidth / 20;
 
 
-            
+
             //add player with a new mover
-            mPlayer = new Player(mContentStore.getTexture("SpaceShip"), mContentStore.getTexture("SpaceShip"), bulletWidth, screenWidth / 2, screenHeight - 20, 500, 500, mContentStore.GetSoundEffect("laser"));
+            int playerHorisontalSpeed = 200;
+            int [] playerDimentions = { 50, 50};
+            mPlayer = new Player(mContentStore, spaceShipTexture, spaceShipTexture, gunSound, screenWidth / 2, screenHeight * 0.8f, playerHorisontalSpeed, 0, playerDimentions[0], playerDimentions[1]);
 
             //add enemies
             int numEnemyRows = 3, numEnemiyCols = 5;
             int enemyPosX = 0, enemyPosY = 0;
             int enemySpacingX = 50, enemySpacingY = 60;//space between enemies (num pixels)
-
+            int[] enemyDimentions = { 50, 50 };
             for (int i = 0; i < numEnemiyCols; i++)
             {
                 for (int j = 0; j < numEnemyRows; j++)
                 {
-                    mEnemies.Add(new Enemy(mContentStore.getTexture("Alien1"), spaceshipWidth, enemyPosX + (i * enemySpacingX), enemyPosY + (j * enemySpacingY), 500, 500, mSoundManager));
+                    mEnemies.Add(new Enemy(mContentStore, enemyTexture, enemyPosX + (i * enemySpacingX), enemyPosY + (j * enemySpacingY), 0, 0, enemyDimentions[0], enemyDimentions[1]));
                 }
             }
-
             //add barricades
             int numBarricades = 4;
             int barricadeOffset = (int)(screenWidth * 0.2f);
             int barricadeSpacing = 150;
+            int[] barricadeDimentions = { 75, 25 };
             for (int i = 0; i < numBarricades; i++)
             {
-                mBarricade.Add(new Barricade(mContentStore.getTexture("block"), barricadeWidth, i * barricadeSpacing + barricadeOffset, screenHeight * 0.8f));
+                mBarricade.Add(new Barricade(mContentStore, barricateTexture, i * barricadeSpacing + barricadeOffset, screenHeight * 0.8f, barricadeDimentions[0], barricadeDimentions[1]));
             }
 
 
             //the required things for the scenes
-            Texture2D splashScreenTex = Content.Load<Texture2D>("splashScreen");
-            Sprite splashImage = new Sprite(splashScreenTex, screenWidth, 0, 0);
-            SpriteFont messageFont = Content.Load<SpriteFont>("MessageFont");
+            int[] splashImageDimentions = { screenWidth, screenHeight };
+            Sprite splashImage = new Sprite(mContentStore, splashScreenTex, 0, 0, splashImageDimentions[0], splashImageDimentions[1]);
+            
 
             //create the scenes
             SplashScreen splashScreen = new SplashScreen(splashImage, 1);//create splash screen
-            MainMenu mainMenu = new MainMenu(splashImage, messageFont);
+            MainMenu mainMenu = new MainMenu(splashImage, mContentStore.GetSpriteFont("MessageFont"));
             GameplayScene gameTestScene = new GameplayScene(mPlayer, mEnemies, mBarricade);//create gameplay scene
 
             //add the scenes to the manager

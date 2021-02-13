@@ -12,7 +12,9 @@ namespace CrackerChase
         //members    
         public bool mIsDead;
 
-        public Enemy(Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed, SoundManager soundManager) : base(inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
+
+        public Enemy(ContentStore content, string texName, float defaultXPos, float defaultYPos, float inDefaultXSpeed, float inDefaultYSpeed, int spriteWidth, int spriteHeight) 
+            : base(content, texName, defaultXPos, defaultYPos, inDefaultXSpeed, inDefaultYSpeed, spriteWidth, spriteHeight)
         {
             mIsDead = false;
         }

@@ -15,6 +15,7 @@ namespace CrackerChase
 {
     class ContentStore
     {
+        //TODO: Implement the functions with templates
         //monogame content manager (used to load content)
         public ContentManager mContentIO;
         //stores the textures
@@ -23,15 +24,19 @@ namespace CrackerChase
         Dictionary<string, Song> mSongs;
         //sound effects
         Dictionary<string, SoundEffect> mSoundEffects;
+        //fonts
+        Dictionary<string, SpriteFont> mSpriteFonts;
 
         public ContentStore(ContentManager contentLoader)
         {
             mTextures = new Dictionary<string, Texture2D>();
             mSongs = new Dictionary<string, Song>();
             mSoundEffects = new Dictionary<string, SoundEffect>();
+            mSpriteFonts = new Dictionary<string, SpriteFont>();
             mContentIO = contentLoader;
         }
 
+        #region textures
         //add a texture directly from file - overwrites the old texture if it exists
         public void addTexture(string texName)
         {
@@ -51,7 +56,17 @@ namespace CrackerChase
             else
                 mTextures.Add(texName, tex);
         }
+        //gets a texture by its key/name
+        public Texture2D getTexture(string texName)
+        {
+            if (mTextures.ContainsKey(texName))
+                return mTextures[texName];
+            else
+                return null;
+        }
+        #endregion
 
+        #region songs
         //add a song directly from file - overwrites the old song if it exists
         public void addSong(string songName)
         {
@@ -72,7 +87,17 @@ namespace CrackerChase
             else
                 mSongs.Add(songName, song);
         }
+        //gets a song by its key/name
+        public Song getSong(string songName)
+        {
+            if (mSongs.ContainsKey(songName))
+                return mSongs[songName];
+            else
+                return null;
+        }
+        #endregion
 
+        #region soundEffects
         //add a sound directly from file - overwrites the old sound if it exists
         public void addSoundEffect(string soundName)
         {
@@ -93,25 +118,6 @@ namespace CrackerChase
             else
                 mSoundEffects.Add(soundName, sound);
         }
-
-        //gets a texture by its key/name
-        public Texture2D getTexture(string texName)
-        {
-            if (mTextures.ContainsKey(texName))
-                return mTextures[texName];
-            else
-                return null;
-        }
-
-        //gets a song by its key/name
-        public Song getSong(string songName)
-        {
-            if (mSongs.ContainsKey(songName))
-                return mSongs[songName];
-            else
-                return null;
-        }
-
         //gets a sound effect by its key/name
         public SoundEffect GetSoundEffect(string soundName)
         {
@@ -120,6 +126,38 @@ namespace CrackerChase
             else
                 return null;
         }
+        #endregion
+
+        #region sprite fonts
+        //add a font directly from file - overwrites the old font if it exists
+        public void addSpriteFont(string fontName)
+        {
+            if (mSpriteFonts.ContainsKey(fontName))
+            {
+                mSpriteFonts[fontName] = mContentIO.Load<SpriteFont>(fontName);
+            }
+            else
+            {
+                mSpriteFonts.Add(fontName, mContentIO.Load<SpriteFont>(fontName));
+            }
+        }
+        //add a font - overwrites the old font if it exists
+        public void addSpriteFont(SpriteFont font, string fontName)
+        {
+            if (mSpriteFonts.ContainsKey(fontName))
+                mSpriteFonts[fontName] = font;
+            else
+                mSpriteFonts.Add(fontName, font);
+        }
+        //gets a font by its key/name
+        public SpriteFont GetSpriteFont(string fontName)
+        {
+            if (mSpriteFonts.ContainsKey(fontName))
+                return mSpriteFonts[fontName];
+            else
+                return null;
+        }
+        #endregion
 
     }
 }

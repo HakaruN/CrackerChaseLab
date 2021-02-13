@@ -10,9 +10,23 @@ namespace CrackerChase
 {
     class Bullet : Mover
     {
-        public Bullet(Texture2D bulletTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) : base(bulletTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
-        {
+        //gunfire sound
+        protected SoundEffect mGunFire;
 
+        public SoundEffect getGunfireSound()
+        {
+            return mGunFire;
+        }
+
+        public Bullet(ContentStore content, string texName, string gunSoundName,  float defaultXPos, float defaultYPos, float inDefaultXSpeed, float inDefaultYSpeed, int spriteWidth, int spriteHeight) 
+            : base(content, texName, defaultXPos, defaultYPos, inDefaultXSpeed, inDefaultYSpeed, spriteWidth, spriteHeight)
+        {
+            mGunFire = content.GetSoundEffect(gunSoundName);
+        }
+
+        public override void Update(float deltaTime)
+        {
+            base.Update(deltaTime);
         }
 
         /*

@@ -12,109 +12,97 @@ namespace CrackerChase
     {
         public void StartMovingUp()
         {
-            MovingUp = true;
+            mIsMovingUp = true;
         }
         public void StopMovingUp()
         {
-            MovingUp = false;
+            mIsMovingUp = false;
         }
 
         public void StartMovingDown()
         {
-            MovingDown = true;
+            mIsMovingDown = true;
         }
         public void StopMovingDown()
         {
-            MovingDown = false;
+            mIsMovingDown = false;
         }
 
         public void StartMovingLeft()
         {
-            MovingLeft = true;
+            mIsMovingLeft = true;
         }
         public void StopMovingLeft()
         {
-            MovingLeft = false;
+            mIsMovingLeft = false;
         }
 
         public void StartMovingRight()
         {
-            MovingRight = true;
+            mIsMovingRight = true;
         }
         public void StopMovingRight()
         {
-            MovingRight = false;
+            mIsMovingRight = false;
         }
 
         public Vector2 GetPos()
         {
-            Vector2 position = new Vector2(xPosition,yPosition);
+            Vector2 position = new Vector2(mXPos, mYPos);
 
             return position;
         }
 
 
-        protected bool MovingUp;
-        protected bool MovingDown;
-        protected bool MovingLeft;
-        protected bool MovingRight;
+        protected bool mIsMovingUp;
+        protected bool mIsMovingDown;
+        protected bool mIsMovingLeft;
+        protected bool mIsMovingRight;
 
-        protected float resetXSpeed;
-        public float getResetXSpeed() { return resetXSpeed; }
-        protected float resetYSpeed;
-        public float getResetYSpeed() { return resetYSpeed; }
 
-        protected float xSpeed;
-        protected float ySpeed;
+        protected float mXSpeed;
+        protected float mYSpeed;
 
-        public Mover
-            (Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) :
-            base(inSpriteTexture, inDrawWidth, inResetX, inResetY)
+        public Mover(ContentStore content, string texName, float defaultXPos, float defaultYPos, float inDefaultXSpeed, float inDefaultYSpeed, int spriteWidth, int spriteHeight) :
+            base(content, texName, defaultXPos, defaultYPos, spriteWidth, spriteHeight)
         {
-            resetXSpeed = inResetXSpeed;
-            resetYSpeed = inResetYSpeed;
+            SetSpeed(inDefaultXSpeed, inDefaultYSpeed);
             Reset();
         }
 
-        public override void Reset()
+        public void Reset()
         {
-            MovingDown = false;
-            MovingUp = false;
-            MovingLeft = false;
-            MovingRight = false;
-            SetSpeed(resetXSpeed, resetYSpeed);
-            base.Reset();
+            mIsMovingDown = false;
+            mIsMovingUp = false;
+            mIsMovingLeft = false;
+            mIsMovingRight = false;
         }
 
         public void SetSpeed(float inXSpeed, float inYSpeed)
         {
-            xSpeed = inXSpeed;
-            ySpeed = inYSpeed;
+            mXSpeed = inXSpeed;
+            mYSpeed = inYSpeed;
         }
 
         public override void Update(float deltaTime)
         {
-            if (MovingLeft)
+            if (mIsMovingLeft)
             {
-                xPosition = xPosition - (xSpeed * deltaTime);
-                //Console.WriteLine("Moving left");
+                mXPos = mXPos - (mXSpeed * deltaTime);
+                Console.WriteLine("moveing left");
             }
-            if (MovingRight)
+            if (mIsMovingRight)
             {
-                xPosition = xPosition + (xSpeed * deltaTime);
-                //Console.WriteLine("Moving right");
+                mXPos = mXPos + (mXSpeed * deltaTime);
+                Console.WriteLine("moveing right");
             }
-            if (MovingUp)
+            if (mIsMovingUp)
             {
-                yPosition = yPosition - (ySpeed * deltaTime);
-                //Console.WriteLine("Moving up");
-                //Console.WriteLine("Bullet moving with yspeed: {0}", ySpeed);
-                //Console.WriteLine("Bullet y pos: {0}", yPosition);
+                mYPos = mYPos - (mYSpeed * deltaTime);
             }
-            if (MovingDown)
+            if (mIsMovingDown)
             {
-                yPosition = yPosition + (ySpeed * deltaTime);
-                //Console.WriteLine("Moving down");
+                mYPos = mYPos + (mYSpeed * deltaTime);
             }
 
             /*//This takes care of ensuring the movers never go off screen
@@ -137,17 +125,7 @@ namespace CrackerChase
             }
             */
 
-            //Console.WriteLine("xpos: {0}, ypos:{1}", xPosition,yPosition );
             base.Update(deltaTime);
         }
-        /*
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            rectangle.X = (int)Math.Round(xPosition);
-            rectangle.Y = (int)Math.Round(yPosition);
-            spriteBatch.Draw(texture, rectangle, Color.White);
-        }
-        */
-
     }
 }
