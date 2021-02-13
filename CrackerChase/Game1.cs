@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Audio;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.Xna.Framework.Media;
 
 namespace CrackerChase
 {
@@ -30,7 +31,7 @@ namespace CrackerChase
         Enemy mEnemy;
 
         List<Enemy> mEnemies;
-        SoundManager soundManager;
+        SoundManager mSoundManager;
         List<Barricade> mBarricade;
         //legacy crap
         //Mover cheese;
@@ -88,6 +89,8 @@ namespace CrackerChase
             mSceneManager = new SceneManager();
             //init graphics
             graphics = new GraphicsDeviceManager(this);
+            //init audio
+            mSoundManager = new SoundManager(Content);
             //init content
             Content.RootDirectory = "Content";
 
@@ -116,82 +119,57 @@ namespace CrackerChase
 
             screenWidth = GraphicsDevice.Viewport.Width;
             screenHeight = GraphicsDevice.Viewport.Height;
-            /*
-            messageFont = Content.Load<SpriteFont>("MessageFont");
 
-            Texture2D cheeseTexture = Content.Load<Texture2D>("cheese");
-            Texture2D cloth = Content.Load<Texture2D>("Tablecloth");
-            Texture2D crackerTexture = Content.Load<Texture2D>("cracker");
-
-            BurpSound = Content.Load<SoundEffect>("Burp");
-
-            background = new Sprite(screenWidth, screenHeight, cloth, screenWidth, 0, 0);
-            gameSprites.Add(background);
-
-            int crackerWidth = screenWidth / 20;
-
-            for (int i = 0; i < 100; i++)
-            {
-                cracker = new Target(screenWidth, screenHeight, crackerTexture, crackerWidth, 0, 0);
-                gameSprites.Add(cracker);
-                crackers.Add(cracker);
-            }
-            
-            int cheeseWidth = screenWidth / 15;
-            cheese = new Mover(screenWidth, screenHeight, cheeseTexture, cheeseWidth, screenWidth / 2, screenHeight / 2, 500, 500);
-            //gameSprites.Add(cheese);
-            */
+            //load sounds
+            SoundEffect gunfireSound = Content.Load<SoundEffect>("laser");
+            Song backGroundMusic = Content.Load<Song>("spaceInvaders");
+            mSoundManager.playSong(backGroundMusic);
+           
 
             //init the enemies list
             mEnemies = new List<Enemy>();
             mBarricade = new List<Barricade>();
 
+            
+            //Enemy texture
+            Texture2D alien1Tex = Content.Load<Texture2D>("Alien1");
             //space ship texture
             Texture2D spaceShipTex = Content.Load<Texture2D>("SpaceShip");
             int spaceshipWidth = screenWidth / 25;
-             soundManager = new SoundManager(Content);
             
             //add player with a new mover
-            mPlayer = new Player(
-                new Mover(screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500),
-                screenWidth, screenHeight, spaceShipTex, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500,soundManager);
-<<<<<<< HEAD
+            mPlayer = new Player(screenWidth, screenHeight, spaceShipTex, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500, gunfireSound);
 
-            int numEnemyRows = 5, numEnemiyCols = 5;
+            //add enemies
+            int numEnemyRows = 3, numEnemiyCols = 5;
             int enemyPosX = 0, enemyPosY = 0;
-            int enemySpacingX = 50, enemySpacingY = 50;//space between enemies (num pixels)
+            int enemySpacingX = 50, enemySpacingY = 60;//space between enemies (num pixels)
+
             for (int i = 0; i < numEnemiyCols; i++)
             {
                 for (int j = 0; j < numEnemyRows; j++)
                 {
-                    mEnemies.Add(new Enemy(new Mover
-                    (screenWidth, screenHeight, spaceShipTex, spaceshipWidth, i * (enemyPosX + enemySpacingX), j * (enemyPosY + enemySpacingY) + 25, 500, 500),
-                    screenWidth, screenHeight, spaceShipTex, spaceshipWidth, i * (enemyPosX + enemySpacingX), j * (enemyPosY + enemySpacingY) + 25, 500, 500));
+                    mEnemies.Add(new Enemy(screenWidth, screenHeight, alien1Tex, spaceshipWidth, enemyPosX + (i * enemySpacingX), enemyPosY + (j * enemySpacingY), 500, 500, mSoundManager));
                 }
             }
-=======
-            mEnemies.Add(new Enemy(new Mover
-                (screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500),
-                screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500,soundManager));
->>>>>>> f802a8a844b2a522ff9dc187deb006f15918d21b
 
             mBarricade.Add(new Barricade(new Mover(screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 4, screenHeight - 20, 500, 500),
                 screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500));
 
 
-
-            /*mEnemy = new Enemy(new Mover
-                (screenWidth,screenHeight,spaceShipTex,spaceshipWidth,screenWidth/2,screenHeight-20,500,500),
-                screenWidth,screenHeight,spaceShipTex,spaceshipWidth,screenWidth/2,screenHeight-20,500,500);*/
-
-            //Add the first scene
+            //the required things for the scenes
             Texture2D splashScreenTex = Content.Load<Texture2D>("splashScreen");
             Sprite splashImage = new Sprite(screenWidth, screenHeight, splashScreenTex, screenWidth, 0, 0);
+            SpriteFont messageFont = Content.Load<SpriteFont>("MessageFont");
 
-            SplashScreen splashScreen = new SplashScreen(splashImage);//create splash screen
+            //create the scenes
+            SplashScreen splashScreen = new SplashScreen(splashImage, 1);//create splash screen
+            MainMenu mainMenu = new MainMenu(splashImage, messageFont);
+            GameplayScene gameTestScene = new GameplayScene(mPlayer, mEnemies, mBarricade);//create gameplay scene
+
+            //add the scenes to the manager
             mSceneManager.addScene(splashScreen);//add the splash screen
-
-            GameplayScene gameTestScene = new GameplayScene(mPlayer, mEnemies, mBarricade, ref enemyPosX, ref enemyPosY);//create gameplay scene
+            mSceneManager.addScene(mainMenu);//add the splash screen
             mSceneManager.addScene(gameTestScene);//add the scene to the manager
 
           
@@ -224,7 +202,7 @@ namespace CrackerChase
             //passes an update call to the scene manager
             screenWidth = GraphicsDevice.Viewport.Width;
             screenHeight = GraphicsDevice.Viewport.Height;
-            mSceneManager.Update(gameTime, keys, screenWidth, screenHeight);
+            mSceneManager.Update(1.0f/60.0f, keys, mSceneManager, mSoundManager, screenWidth, screenHeight);
 
         }
 

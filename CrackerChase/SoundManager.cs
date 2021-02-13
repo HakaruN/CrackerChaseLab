@@ -11,41 +11,33 @@ namespace CrackerChase
 {
     class SoundManager
     {
-        SoundEffect playerDeath;
-        SoundEffect enemyColision;
-        Song backgroundSound;
-        SoundEffect fireGun;
-        ContentManager content;
-       public SoundManager(ContentManager cont)
-        {
-            content = cont;
-            playerDeath = content.Load<SoundEffect>("explosion");
-            fireGun = content.Load<SoundEffect>("laser");
-            backgroundSound = content.Load<Song>("spaceInvaders");
-            enemyColision = content.Load<SoundEffect>("beep1");
-        }
-        public void playDeath()
-        {
-            playerDeath.CreateInstance().Play();
-        }
+        //The song that will make up the background music
+        Song mBackgroundMusic;
 
-        public void playGun()
-        {
-           fireGun.CreateInstance().Play();
-           fireGun.CreateInstance().Stop();
-        }
 
-        public void playBackground()
+        public SoundManager(ContentManager cont)
         {
-                 
+      
         }
-
-        public void enemyCol()
+        public void playSound(SoundEffect sound)
         {
-            enemyColision.CreateInstance().Play();
-            enemyColision.CreateInstance().Stop();
+            sound.CreateInstance().Play();
         }
+        
+        public void playSong(Song song)
+        {
+            mBackgroundMusic = song;
+            MediaPlayer.Play(mBackgroundMusic);
+            
+        }
+        public void haltSong()
+        {
 
+        }
+        public void setVolume(int vol)
+        {
+
+        }
 
 
     }

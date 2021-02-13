@@ -67,21 +67,15 @@ namespace CrackerChase
         protected float xSpeed;
         protected float ySpeed;
 
-        public Mover(int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) :
+        public Mover
+            (int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) :
             base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY)
         {
             resetXSpeed = inResetXSpeed;
             resetYSpeed = inResetYSpeed;
             Reset();
         }
-        /*
-        public Mover(Mover other) 
-            : base(other.getScreenWidth(), other.getScreenHeight(), other.getTexture(), inDrawWidth, inResetX, inResetY)
-        {
-            resetXSpeed = other.getResetXSpeed();
-            resetYSpeed = other.getResetYSpeed();
-        }
-        */
+
         public override void Reset()
         {
             MovingDown = false;

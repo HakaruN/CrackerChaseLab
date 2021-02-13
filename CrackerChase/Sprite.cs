@@ -63,6 +63,11 @@ namespace CrackerChase
             xResetPosition = x;
             yResetPosition = y;
         }
+        public void offsetPosition(float xOffset, float yOffset)
+        {
+            xPosition += xOffset;
+            yPosition += yOffset;
+        }
 
         public virtual void Reset()
         {

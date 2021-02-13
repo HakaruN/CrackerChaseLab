@@ -10,40 +10,22 @@ namespace CrackerChase
 {
     class Enemy : Mover
     {
-        //members
-        Mover mMover;//the mover that represents the player        
-        Mover mBullet;
-        SoundManager soundManager;
+        //members    
+        public bool mIsDead;
 
-        public Enemy(int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) : base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
+        public Enemy(int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed, SoundManager soundManager) : base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
         {
+            mIsDead = false;
         }
 
-        public Enemy(Mover playerMover, int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed,SoundManager sound) : base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
+        
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            mMover = playerMover;
-            soundManager = sound;
+            if (mIsDead == false)
+            { 
+                base.Draw(spriteBatch);
+            }
         }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            //spriteBatch.Begin();
-            mMover.Draw(spriteBatch);
-            //spriteBatch.End();
-        }
-
-        //add a sprite to the sprite list
-        public void addSprite(Mover m)
-        {
-            mMover = m;
-        }
-
-        public void Update(GameTime gameTime)
-        {
-
-        }
-
-
 
     }
 }

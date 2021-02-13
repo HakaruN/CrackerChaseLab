@@ -11,70 +11,75 @@ namespace CrackerChase
 {
     class GameplayScene : GameScene
     {
-        public GameplayScene(Player player, List<Enemy> enemies, List<Barricade> barricades, ref int enemiesXPos, ref int enemiesYPos)
+        public GameplayScene(Player player, List<Enemy> enemies, List<Barricade> barricades)
         {
             mPlayer = player;
             mEnemies = enemies;
             mBarricades = barricades;
             gameScore = 0;
-            mEnemiesXPos = enemiesXPos;
-            mEnemiesYPos = enemiesYPos;
+            numStepsPerRow = 450;
+            numStepsSoFar = 0;
+            walkDir = true;
         }
 
 
-        public void Update(GameTime gametime, KeyboardState keys, SceneManager manager, int inScreenWidth, int inScreenHeight)
+        public void update(float deltaTime, KeyboardState keys, SceneManager sceneManager, SoundManager soundManager, int inScreenWidth, int inScreenHeight)
         {
             //call update method on the player
-            mPlayer.Update(1/60f, keys, inScreenWidth, inScreenHeight);
+            mPlayer.Update(deltaTime, keys, inScreenWidth, inScreenHeight, soundManager);
 
-            ///mEnemy.Update(gametime);
 
-            //call update method on the aliens
-
-            //set enemy to change direction when they reach 10 pixels from the screen side
-            if(mEnemiesXPos <= 10)
+            //calc enemy movements
+            
+            Console.WriteLine("Num steps so far {0}", numStepsSoFar);
+            if (numStepsSoFar >= numStepsPerRow)
             {
-                enemyMoveDir = false;
-                mEnemiesYPos = mEnemiesYPos - 1;
-            }
-            else if(mEnemiesXPos >= inScreenWidth - 1)
-            {
-                enemyMoveDir = true;
-                mEnemiesYPos = mEnemiesYPos - 1;
-            }
+                numStepsSoFar = 0;//reset the number of steps
+                walkDir = !walkDir;//reverse the direction of walking
 
-            //apply position changes
-            if(enemyMoveDir == false)
-            {
-                mEnemiesXPos = mEnemiesXPos - 1;
+                //move all enemies down a bit
+                for(int i = 0; i < mEnemies.Count(); i++)
+                    mEnemies[i].offsetPosition(0.00f, inScreenHeight * 10f * deltaTime);
             }
             else
-            {
-                mEnemiesXPos = mEnemiesXPos + 1;
-            }
-            Console.WriteLine("xPos {0}, yPos {1}", mEnemiesXPos, mEnemiesYPos);
-            
+                numStepsSoFar++;// increment the number of steps
 
+            if(walkDir)
+            {   //walk left
+                for (int i = 0; i < mEnemies.Count(); i++)
+                {
+                    mEnemies[i].offsetPosition(100f * deltaTime, 0);
+                }
+            }
+            else
+            {   //walk right
+                for (int i = 0; i < mEnemies.Count(); i++)
+                {
+                    mEnemies[i].offsetPosition(-100f * deltaTime, 0);
+                }
+            }
+
+            //update enemies logic
             for (int i = 0; i < mEnemies.Count(); i++)
             {
-                mEnemies[i].SetPosition(mEnemies[i].GetPos().X + mEnemiesXPos, mEnemies[i].GetPos().Y + mEnemiesYPos);
-                mEnemies[i].Update(gametime);
+                mEnemies[i].Update(1.0f / 60.0f);
+                if (mPlayer.getBullet().IntersectsWith(mEnemies[i]))
+                {
+                    mEnemies[i].mIsDead = true;//destroy enemy
+                    //mPlayer.isOnScreen = false;
+                }
             }
 
-            for(int i = 0; i < mBarricades.Count; i++)
+            //update barricades
+            for (int i = 0; i < mBarricades.Count; i++)
             {
-                mBarricades[i].Update(gametime);
+                mBarricades[i].Update(deltaTime);
             }
 
-            //end game logic
-            if(mEnemiesYPos <= 100)
-            {
-                Console.WriteLine("Game lost");
-            }
             
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void draw(SpriteBatch spriteBatch)
         {
             //call draw method on the player
             mPlayer.Draw(spriteBatch);
@@ -95,11 +100,12 @@ namespace CrackerChase
         }
 
         int gameScore;
-        bool enemyMoveDir = false;
-        int mEnemiesXPos, mEnemiesYPos;
         Player mPlayer;//player
         List<Enemy> mEnemies;//list of the aliens
         List<Barricade> mBarricades;
+        //enemy movement
+        int numStepsSoFar, numStepsPerRow;
+        bool walkDir;
         //Enemy mEnemy;
 
         //todo: add list of aliens, player object
