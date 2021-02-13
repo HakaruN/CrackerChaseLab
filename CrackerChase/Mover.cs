@@ -68,8 +68,8 @@ namespace CrackerChase
         protected float ySpeed;
 
         public Mover
-            (int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) :
-            base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY)
+            (Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) :
+            base(inSpriteTexture, inDrawWidth, inResetX, inResetY)
         {
             resetXSpeed = inResetXSpeed;
             resetYSpeed = inResetYSpeed;
@@ -117,6 +117,7 @@ namespace CrackerChase
                 //Console.WriteLine("Moving down");
             }
 
+            /*//This takes care of ensuring the movers never go off screen
             if (xPosition < 0)
             {
                 xPosition = 0;
@@ -134,6 +135,8 @@ namespace CrackerChase
             {
                 yPosition = screenHeight - rectangle.Height;
             }
+            */
+
             //Console.WriteLine("xpos: {0}, ypos:{1}", xPosition,yPosition );
             base.Update(deltaTime);
         }

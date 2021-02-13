@@ -7,10 +7,7 @@ namespace CrackerChase
     class Sprite
     {
 
-        protected int screenWidth { get; }
-        public int getScreenWidth() { return screenWidth; }
-        protected int screenHeight { get; }
-        public int getScreenHeight() { return screenHeight; }
+
 
         protected Texture2D texture;
         public Texture2D getTexture() { return texture; }
@@ -22,12 +19,11 @@ namespace CrackerChase
         protected float xResetPosition;
         protected float yResetPosition;
 
-        public Sprite(int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY)
+        public Sprite(Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY)
         {
             texture = inSpriteTexture;
 
-            screenWidth = inScreenWidth;
-            screenHeight = inScreenHeight;
+
 
             xResetPosition = inResetX;
             yResetPosition = inResetY;

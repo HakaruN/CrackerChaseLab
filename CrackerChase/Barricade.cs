@@ -15,32 +15,19 @@ namespace CrackerChase
         bool bIsGone = false;
         public int barricadeHealth = 5;
 
-        //members
-        Mover mMover;//the mover that represents the player
-
-        public Barricade(int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) : base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
+        public Barricade(Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) : base(inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
         {
 
         }
 
-        public Barricade(Mover playerMover, int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) : base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
-        {
-            mMover = playerMover;
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
             if (!bIsGone)
             {
-                mMover.Draw(spriteBatch);
+                base.Draw(spriteBatch);
             }
         }
 
-        //add a sprite to the sprite list
-        public void addSprite(Mover m)
-        {
-            mMover = m;
-        }
 
         public void Update(GameTime gameTime)
         {

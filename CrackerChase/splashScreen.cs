@@ -38,14 +38,11 @@ namespace CrackerChase
                 sceneManager.selectNextScene();
             }
             mEnduredScreenTime += (deltaTime);//increment the endured splash time
-
         }
 
         public void draw(SpriteBatch spriteBatch)
         {
-            //spriteBatch.Begin();
             mSplashImage.Draw(spriteBatch);//draw the splash screen
-            //spriteBatch.End();
         }
 
 

@@ -24,26 +24,14 @@ namespace CrackerChase
 
 
 
-        public Player(int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, Texture2D bulletTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed, SoundEffect gunFire)
-            : base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
+        public Player(Texture2D inSpriteTexture, Texture2D bulletTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed, SoundEffect gunFire)
+            : base(inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
         {
             //init the bullet
-            mBullet = new Mover(inScreenWidth, inScreenHeight, bulletTexture, inDrawWidth, -10, -10, 0, 500);
+            mBullet = new Mover(bulletTexture, inDrawWidth, -10, -10, 0, 500);
             //gun sound
             mGunFire = gunFire;
         }
-
-        /*
-        public Player(Mover playerMover, int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, Texture2D bulletTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed, SoundEffect gunFire) 
-            : base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
-        {
-            //init the bullet
-            mBullet = new Mover(inScreenWidth, inScreenHeight, bulletTexture, inDrawWidth, -10, -10, 0, 500);
-            //gun sound
-            mGunFire = gunFire;
-
-            mMover = playerMover;
-        }*/
 
         public Mover getBullet()
         {
@@ -53,7 +41,6 @@ namespace CrackerChase
         //check if bullet is onscreen
         private bool isBulletOnscreen(int inScreenWidth, int inScreenHeight)
         {
-            //Console.WriteLine("xpos: {0}, ypos: {1}", mBullet.GetPos().X, mBullet.GetPos().Y);
 
             if (mBullet.GetPos().X < inScreenWidth && mBullet.GetPos().X > 0)
             //if its within the width of the screen

@@ -45,10 +45,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Barricade.cs" />
+    <Compile Include="Bullet.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="gameplayScene.cs" />
     <Compile Include="gameScene.cs" />
+    <Compile Include="mainMenu.cs" />
     <Compile Include="Mover.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />

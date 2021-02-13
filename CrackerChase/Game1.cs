@@ -138,7 +138,7 @@ namespace CrackerChase
             int spaceshipWidth = screenWidth / 25;
             
             //add player with a new mover
-            mPlayer = new Player(screenWidth, screenHeight, spaceShipTex, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500, gunfireSound);
+            mPlayer = new Player(spaceShipTex, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500, gunfireSound);
 
             //add enemies
             int numEnemyRows = 3, numEnemiyCols = 5;
@@ -149,17 +149,16 @@ namespace CrackerChase
             {
                 for (int j = 0; j < numEnemyRows; j++)
                 {
-                    mEnemies.Add(new Enemy(screenWidth, screenHeight, alien1Tex, spaceshipWidth, enemyPosX + (i * enemySpacingX), enemyPosY + (j * enemySpacingY), 500, 500, mSoundManager));
+                    mEnemies.Add(new Enemy(alien1Tex, spaceshipWidth, enemyPosX + (i * enemySpacingX), enemyPosY + (j * enemySpacingY), 500, 500, mSoundManager));
                 }
             }
 
-            mBarricade.Add(new Barricade(new Mover(screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 4, screenHeight - 20, 500, 500),
-                screenWidth, screenHeight, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500));
+            mBarricade.Add(new Barricade(spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500));
 
 
             //the required things for the scenes
             Texture2D splashScreenTex = Content.Load<Texture2D>("splashScreen");
-            Sprite splashImage = new Sprite(screenWidth, screenHeight, splashScreenTex, screenWidth, 0, 0);
+            Sprite splashImage = new Sprite(splashScreenTex, screenWidth, 0, 0);
             SpriteFont messageFont = Content.Load<SpriteFont>("MessageFont");
 
             //create the scenes

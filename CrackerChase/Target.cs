@@ -11,15 +11,16 @@ namespace CrackerChase
     {
 
         static Random rand = new Random();
+        int mScreenWidth, mScreenHeight;
         override public void Reset()
         {
-            int x = rand.Next(0, screenWidth - rectangle.Width);
-            int y = rand.Next(0, screenHeight - rectangle.Height);
+            int x = rand.Next(0, mScreenWidth - rectangle.Width);
+            int y = rand.Next(0, mScreenHeight - rectangle.Height);
             SetPosition(x, y);
         }
 
-        public Target(int inScreenWidth, int inScreenHeight, Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY) :
-            base(inScreenWidth, inScreenHeight, inSpriteTexture, inDrawWidth, inResetX, inResetY)
+        public Target(int mScreenWidth, int mScreenHeight, Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY) :
+            base(inSpriteTexture, inDrawWidth, inResetX, inResetY)
         {
         }
     }
