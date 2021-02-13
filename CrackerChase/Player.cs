@@ -83,10 +83,12 @@ namespace CrackerChase
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch);
-
+            //if the bullet is on screen draw it
             if(isBulletOnScreen)
                 mBullet.Draw(spriteBatch);            
+
+            //draw the player
+            base.Draw(spriteBatch);
         }
 
 

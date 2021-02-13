@@ -77,3 +77,4 @@ C:\Users\Hakaru\Documents\spaceInvaders\CrackerChaseLab\CrackerChase\obj\x86\Deb
 C:\Users\Hakaru\Documents\spaceInvaders\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\Content\Alien1.xnb
 C:\Users\Hakaru\Documents\spaceInvaders\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\Content\block.xnb
 C:\Users\Hakaru\Documents\spaceInvaders\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\Content\bullet.xnb
+C:\Users\Hakaru\Documents\spaceInvaders\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\Content\BackGrounds.xnb

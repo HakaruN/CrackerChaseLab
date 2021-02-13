@@ -105,6 +105,9 @@ namespace CrackerChase
             //splash screen texture
             string splashScreenTex = "splashScreen";
             mContentStore.addTexture(splashScreenTex);
+            //gameplay background 
+            string backGroundTexture = "BackGrounds";
+            mContentStore.addTexture(backGroundTexture);
             //Enemy texture
             string enemyTexture = "Alien1";
             mContentStore.addTexture(enemyTexture);
@@ -126,7 +129,7 @@ namespace CrackerChase
             //add player with a new mover
             int playerHorisontalSpeed = 200;
             int [] playerDimentions = { 50, 50};
-            mPlayer = new Player(mContentStore, spaceShipTexture, spaceShipTexture, gunSound, screenWidth / 2, screenHeight * 0.8f, playerHorisontalSpeed, 0, playerDimentions[0], playerDimentions[1]);
+            mPlayer = new Player(mContentStore, spaceShipTexture, bulletTexture, gunSound, screenWidth / 2, screenHeight - mContentStore.getTexture(spaceShipTexture).Height, playerHorisontalSpeed, 0, playerDimentions[0], playerDimentions[1]);
 
             //add enemies
             int numEnemyRows = 3, numEnemiyCols = 5;
@@ -147,24 +150,29 @@ namespace CrackerChase
             int[] barricadeDimentions = { 75, 25 };
             for (int i = 0; i < numBarricades; i++)
             {
-                mBarricade.Add(new Barricade(mContentStore, barricateTexture, i * barricadeSpacing + barricadeOffset, screenHeight * 0.8f, barricadeDimentions[0], barricadeDimentions[1]));
+                mBarricade.Add(new Barricade(mContentStore, barricateTexture, i * barricadeSpacing + barricadeOffset, 
+                    (screenHeight * 0.9f) - mContentStore.getTexture(barricateTexture).Height, 
+                    barricadeDimentions[0], barricadeDimentions[1]));
             }
 
 
             //the required things for the scenes
             int[] splashImageDimentions = { screenWidth, screenHeight };
             Sprite splashImage = new Sprite(mContentStore, splashScreenTex, 0, 0, splashImageDimentions[0], splashImageDimentions[1]);
+
+            //gameplay background
+            Sprite backGroundImage = new Sprite(mContentStore, backGroundTexture, 0, 0, splashImageDimentions[0], splashImageDimentions[1]);
             
 
             //create the scenes
             SplashScreen splashScreen = new SplashScreen(splashImage, 1);//create splash screen
             MainMenu mainMenu = new MainMenu(splashImage, mContentStore.GetSpriteFont("MessageFont"));
-            GameplayScene gameTestScene = new GameplayScene(mPlayer, mEnemies, mBarricade);//create gameplay scene
+            GameplayScene gameScene = new GameplayScene(mPlayer, mEnemies, mBarricade, backGroundImage);//create gameplay scene
 
             //add the scenes to the manager
             mSceneManager.addScene(splashScreen);//add the splash screen
             mSceneManager.addScene(mainMenu);//add the splash screen
-            mSceneManager.addScene(gameTestScene);//add the scene to the manager
+            mSceneManager.addScene(gameScene);//add the scene to the manager
 
           
             startPlayingGame();

@@ -11,7 +11,7 @@ namespace CrackerChase
 {
     class GameplayScene : GameScene
     {
-        public GameplayScene(Player player, List<Enemy> enemies, List<Barricade> barricades)
+        public GameplayScene(Player player, List<Enemy> enemies, List<Barricade> barricades, Sprite backGroundSprite)
         {
             mPlayer = player;
             mEnemies = enemies;
@@ -20,6 +20,7 @@ namespace CrackerChase
             numStepsPerRow = 450;
             numStepsSoFar = 0;
             walkDir = true;
+            mBackGround = backGroundSprite;
         }
 
 
@@ -79,28 +80,30 @@ namespace CrackerChase
 
         public void draw(SpriteBatch spriteBatch)
         {
+            //draw background
+            mBackGround.Draw(spriteBatch);
+
             //call draw method on the player
             mPlayer.Draw(spriteBatch);
-
             
-            //call draw on the aliens
+            //draw enemies
             for(int i = 0; i < mEnemies.Count(); i++)
             {
                mEnemies[i].Draw(spriteBatch);
             }
             
+            //draw barricades
             for(int i = 0; i < mBarricades.Count; i++)
             {
                 mBarricades[i].Draw(spriteBatch);
             }
-
-            //mEnemy.Draw(spriteBatch);
         }
 
         int gameScore;
         Player mPlayer;//player
         List<Enemy> mEnemies;//list of the aliens
         List<Barricade> mBarricades;
+        Sprite mBackGround;
         //enemy movement
         int numStepsSoFar, numStepsPerRow;
         bool walkDir;
