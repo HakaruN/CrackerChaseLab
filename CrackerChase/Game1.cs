@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework.Media;
+using System.Diagnostics.Contracts;
 
 namespace CrackerChase
 {
@@ -136,9 +137,17 @@ namespace CrackerChase
             //space ship texture
             Texture2D spaceShipTex = Content.Load<Texture2D>("SpaceShip");
             int spaceshipWidth = screenWidth / 25;
+            //barricade texture
+            Texture2D barricadeTex = Content.Load<Texture2D>("block");
+            int barricadeWidth = 10;
+            //bullet texture
+            Texture2D bulletTex = Content.Load<Texture2D>("bullet");
+            int bulletWidth = screenWidth / 20;
+
+
             
             //add player with a new mover
-            mPlayer = new Player(spaceShipTex, spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500, gunfireSound);
+            mPlayer = new Player(spaceShipTex, spaceShipTex, bulletWidth, screenWidth / 2, screenHeight - 20, 500, 500, gunfireSound);
 
             //add enemies
             int numEnemyRows = 3, numEnemiyCols = 5;
@@ -153,7 +162,14 @@ namespace CrackerChase
                 }
             }
 
-            mBarricade.Add(new Barricade(spaceShipTex, spaceshipWidth, screenWidth / 2, screenHeight - 20, 500, 500));
+            //add barricades
+            int numBarricades = 4;
+            int barricadeOffset = (int)(screenWidth * 0.2f);
+            int barricadeSpacing = 150;
+            for (int i = 0; i < numBarricades; i++)
+            {
+                mBarricade.Add(new Barricade(barricadeTex, barricadeWidth, i * barricadeSpacing + barricadeOffset, screenHeight * 0.8f));
+            }
 
 
             //the required things for the scenes

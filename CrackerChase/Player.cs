@@ -11,9 +11,10 @@ namespace CrackerChase
 {
     class Player : Mover
     {
-        //members
-        //Mover mMover;//the mover that represents the player        
-        Mover mBullet;
+        //members:
+
+        //bullet
+        Bullet mBullet;
 
         //gunfire sound
         SoundEffect mGunFire;
@@ -28,7 +29,7 @@ namespace CrackerChase
             : base(inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
         {
             //init the bullet
-            mBullet = new Mover(bulletTexture, inDrawWidth, -10, -10, 0, 500);
+            mBullet = new Bullet(bulletTexture, inDrawWidth, -10, -10, 0, 500);
             //gun sound
             mGunFire = gunFire;
         }
@@ -38,28 +39,7 @@ namespace CrackerChase
             return mBullet;
         }
 
-        //check if bullet is onscreen
-        private bool isBulletOnscreen(int inScreenWidth, int inScreenHeight)
-        {
-
-            if (mBullet.GetPos().X < inScreenWidth && mBullet.GetPos().X > 0)
-            //if its within the width of the screen
-            {
-                if(mBullet.GetPos().Y < inScreenHeight && mBullet.GetPos().Y > 0)
-                {
-                    //Console.WriteLine("Bullet onscreen");
-                    return true;
-                }
-                else
-                {
-                    //Console.WriteLine("Bullet offscreen");
-                    mBullet.SetPosition(-100.0f, -100.0f);
-                    return false;
-                }
-            }
-            //Console.WriteLine("Bullet offscreen");
-            return false;
-        }
+       
 
         public void Update(float deltaTime, KeyboardState keys, int inScreenWidth , int inScreenHeight, SoundManager soundManager)
         {
@@ -94,7 +74,7 @@ namespace CrackerChase
 
 
             //update the bullet
-            if (isBulletOnscreen(inScreenWidth, inScreenHeight))
+            if (mBullet.isOnscreen(inScreenWidth, inScreenHeight))
             {
                 //if the bullet is onscreen then move the bullet up
                 mBullet.StartMovingUp();

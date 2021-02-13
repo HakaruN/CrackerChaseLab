@@ -75,3 +75,5 @@ C:\Users\Hakaru\Documents\spaceInvaders\CrackerChaseLab\CrackerChase\bin\Windows
 C:\Users\Hakaru\Documents\spaceInvaders\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
 C:\Users\Hakaru\Documents\spaceInvaders\CrackerChaseLab\CrackerChase\obj\x86\Debug\CrackerChase.csproj.CopyComplete
 C:\Users\Hakaru\Documents\spaceInvaders\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\Content\Alien1.xnb
+C:\Users\Hakaru\Documents\spaceInvaders\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\Content\block.xnb
+C:\Users\Hakaru\Documents\spaceInvaders\CrackerChaseLab\CrackerChase\bin\Windows\x86\Debug\Content\bullet.xnb

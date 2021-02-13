@@ -90,6 +90,29 @@ namespace CrackerChase
         {
             return rectangle.Intersects(s.rectangle);
         }
+
+        //check if the sprite is onscreen
+        public virtual bool isOnscreen(int inScreenWidth, int inScreenHeight)
+        {
+
+            if (xPosition < inScreenWidth && xPosition > 0)
+            {
+                //within the width of the screen
+                if (yPosition < inScreenHeight && yPosition > 0)
+                {
+                    //within the height of the screen
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 
     

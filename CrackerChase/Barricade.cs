@@ -10,12 +10,12 @@ using System.Text;
 namespace CrackerChase
 {
 
-    class Barricade : Mover
+    class Barricade : Sprite
     {
         bool bIsGone = false;
         public int barricadeHealth = 5;
 
-        public Barricade(Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY, float inResetXSpeed, float inResetYSpeed) : base(inSpriteTexture, inDrawWidth, inResetX, inResetY, inResetXSpeed, inResetYSpeed)
+        public Barricade(Texture2D inSpriteTexture, int inDrawWidth, float inResetX, float inResetY) : base(inSpriteTexture, inDrawWidth, inResetX, inResetY)
         {
 
         }
@@ -29,12 +29,13 @@ namespace CrackerChase
         }
 
 
-        public void Update(GameTime gameTime)
+        public override void Update(float deltaTime)
         {
             if(barricadeHealth <= 0)
             {
                 bIsGone = true;
             }
+            base.Update(deltaTime);
         }
 
 
