@@ -11,7 +11,7 @@ namespace CrackerChase
 {
     interface GameScene//an interface that ensures all games scenes will have an update and draw method
     {
-        void update(float deltaTime, KeyboardState keys, SceneManager sceneManager, SoundManager soundManager, int inScreenWidth, int inScreenHeight);
+        void update(float deltaTime, KeyboardState keys, SceneManager sceneManager, SoundManager soundManager, int inScreenWidth, int inScreenHeight,ref CrossSceneData data);
         void draw(SpriteBatch spriteBatch);
     }
 }

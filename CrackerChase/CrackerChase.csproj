@@ -51,6 +51,7 @@
     <Compile Include="Game1.cs" />
     <Compile Include="gameplayScene.cs" />
     <Compile Include="gameScene.cs" />
+    <Compile Include="highScoreScene.cs" />
     <Compile Include="mainMenu.cs" />
     <Compile Include="Mover.cs" />
     <Compile Include="Player.cs" />

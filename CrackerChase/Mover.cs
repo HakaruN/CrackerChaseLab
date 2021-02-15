@@ -89,12 +89,12 @@ namespace CrackerChase
             if (mIsMovingLeft)
             {
                 mXPos = mXPos - (mXSpeed * deltaTime);
-                Console.WriteLine("moveing left");
+                //Console.WriteLine("moveing left");
             }
             if (mIsMovingRight)
             {
                 mXPos = mXPos + (mXSpeed * deltaTime);
-                Console.WriteLine("moveing right");
+                //Console.WriteLine("moveing right");
             }
             if (mIsMovingUp)
             {

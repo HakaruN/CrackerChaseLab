@@ -10,6 +10,17 @@ using Microsoft.Xna.Framework.Input;
 
 namespace CrackerChase
 {
+    //this struct is used to carry data across scene transitions
+    public struct CrossSceneData
+    {
+        public CrossSceneData(int scoreInit = 0, int healthInit = 0)
+        {
+            score = scoreInit;
+            health = healthInit;
+        }
+        public int score;
+        public int health;
+    }
     class SceneManager
     {
         //methods:
@@ -19,6 +30,7 @@ namespace CrackerChase
             //init the scenes
             mScenes = new List<GameScene>();
             mCurrentScene = 0;//by default we start in scene zero
+            mCrossSceneData = new CrossSceneData();
         }
 
 
@@ -60,9 +72,9 @@ namespace CrackerChase
         }
 
         //manages updates, draws etc
-        public void Update(float deltaTime, KeyboardState keys, SceneManager sceneManager, SoundManager soundManager, int inScreenWidth, int inScreenHeight)
+        public void Update(float deltaTime, KeyboardState keys, SoundManager soundManager, int inScreenWidth, int inScreenHeight)
         {
-            mScenes[mCurrentScene].update(deltaTime, keys, this, soundManager, inScreenWidth, inScreenHeight);
+            mScenes[mCurrentScene].update(deltaTime, keys, this, soundManager, inScreenWidth, inScreenHeight, ref mCrossSceneData);
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -73,5 +85,6 @@ namespace CrackerChase
         //members:
         private List<GameScene> mScenes;
         private int mCurrentScene;//the index of the game scene list that is the currently selected scene
+        private CrossSceneData mCrossSceneData;
     }
 }

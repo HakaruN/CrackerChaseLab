@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Audio;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq.Expressions;
 
 namespace CrackerChase
 {
@@ -24,7 +25,7 @@ namespace CrackerChase
         {
             //init the bullet
             int[] bulletDimentions = { 30, 50 };
-            mBullet = new Bullet(content, bulletTexName, bulletSoundName, 50, 50, 0, 400, bulletDimentions[0], bulletDimentions[1]);
+            mBullet = new Bullet(content, bulletTexName, bulletSoundName, -200, -200, 0, 400, bulletDimentions[0], bulletDimentions[1]);
         }
 
         public Bullet getBullet()
@@ -34,7 +35,6 @@ namespace CrackerChase
 
         public void Update(float deltaTime, KeyboardState keys, int inScreenWidth , int inScreenHeight, SoundManager soundManager)
         {
-            Console.WriteLine("player xPos: {0}", this.mXPos);
             //do player specific updating:
             if (keys.IsKeyDown(Keys.Left) || (keys.IsKeyDown(Keys.A)))
             {
@@ -84,8 +84,11 @@ namespace CrackerChase
         public override void Draw(SpriteBatch spriteBatch)
         {
             //if the bullet is on screen draw it
-            if(isBulletOnScreen)
-                mBullet.Draw(spriteBatch);            
+            //Console.WriteLine("is bullet destroyed: {0}", mBullet.isDestroyed());
+            if (mBullet.isDestroyed() == false)
+            {
+                mBullet.Draw(spriteBatch);
+            }
 
             //draw the player
             base.Draw(spriteBatch);
@@ -97,6 +100,8 @@ namespace CrackerChase
 
             //fire the bullet
             mBullet.SetPosition(this.GetPos().X, this.GetPos().Y);
+            mBullet.undestroyBullet();//make the bullet not destroyed
+            //Console.WriteLine("Undestroying bullet");
 
             //play sound
             soundManager.playSound(mBullet.getGunfireSound());

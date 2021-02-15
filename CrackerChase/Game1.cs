@@ -93,6 +93,7 @@ namespace CrackerChase
             mContentStore.addSoundEffect(gunSound);
             mContentStore.addSong(backgroundSong);
             mSoundManager.playSong(mContentStore.getSong(backgroundSong));
+            mSoundManager.setVolume(0.1f);
 
             //fonts
             mContentStore.addSpriteFont("MessageFont");
@@ -129,13 +130,13 @@ namespace CrackerChase
             //add player with a new mover
             int playerHorisontalSpeed = 200;
             int [] playerDimentions = { 50, 50};
-            mPlayer = new Player(mContentStore, spaceShipTexture, bulletTexture, gunSound, screenWidth / 2, screenHeight - mContentStore.getTexture(spaceShipTexture).Height, playerHorisontalSpeed, 0, playerDimentions[0], playerDimentions[1]);
+            mPlayer = new Player(mContentStore, spaceShipTexture, bulletTexture, gunSound, screenWidth / 2, screenHeight - playerDimentions[0]/*mContentStore.getTexture(spaceShipTexture).Height*/, playerHorisontalSpeed, 0, playerDimentions[0], playerDimentions[1]);
 
             //add enemies
             int numEnemyRows = 3, numEnemiyCols = 5;
             int enemyPosX = 0, enemyPosY = 0;
-            int enemySpacingX = 50, enemySpacingY = 60;//space between enemies (num pixels)
-            int[] enemyDimentions = { 50, 50 };
+            int enemySpacingX = 50, enemySpacingY = 60;
+            int[] enemyDimentions = { 30, 30 };
             for (int i = 0; i < numEnemiyCols; i++)
             {
                 for (int j = 0; j < numEnemyRows; j++)
@@ -161,18 +162,20 @@ namespace CrackerChase
             Sprite splashImage = new Sprite(mContentStore, splashScreenTex, 0, 0, splashImageDimentions[0], splashImageDimentions[1]);
 
             //gameplay background
-            Sprite backGroundImage = new Sprite(mContentStore, backGroundTexture, 0, 0, splashImageDimentions[0], splashImageDimentions[1]);
-            
+            Sprite backGroundImage = new Sprite(mContentStore, backGroundTexture, 0, 0, splashImageDimentions[0], splashImageDimentions[1]);            
 
             //create the scenes
             SplashScreen splashScreen = new SplashScreen(splashImage, 1);//create splash screen
             MainMenu mainMenu = new MainMenu(splashImage, mContentStore.GetSpriteFont("MessageFont"));
             GameplayScene gameScene = new GameplayScene(mPlayer, mEnemies, mBarricade, backGroundImage);//create gameplay scene
+            HighScoreScene highScore = new HighScoreScene(splashImage, mContentStore.GetSpriteFont("MessageFont"));
+
 
             //add the scenes to the manager
             mSceneManager.addScene(splashScreen);//add the splash screen
             mSceneManager.addScene(mainMenu);//add the splash screen
             mSceneManager.addScene(gameScene);//add the scene to the manager
+            mSceneManager.addScene(highScore);
 
           
             startPlayingGame();
@@ -204,7 +207,7 @@ namespace CrackerChase
             //passes an update call to the scene manager
             screenWidth = GraphicsDevice.Viewport.Width;
             screenHeight = GraphicsDevice.Viewport.Height;
-            mSceneManager.Update(1.0f/60.0f, keys, mSceneManager, mSoundManager, screenWidth, screenHeight);
+            mSceneManager.Update(1.0f/60.0f, keys, mSoundManager, screenWidth, screenHeight);
 
         }
 

@@ -12,6 +12,7 @@ namespace CrackerChase
     {
         //gunfire sound
         protected SoundEffect mGunFire;
+        bool mIsBulletDestroyed;//when the bullet hits something, its destroyed
 
         public SoundEffect getGunfireSound()
         {
@@ -22,36 +23,37 @@ namespace CrackerChase
             : base(content, texName, defaultXPos, defaultYPos, inDefaultXSpeed, inDefaultYSpeed, spriteWidth, spriteHeight)
         {
             mGunFire = content.GetSoundEffect(gunSoundName);
+            //mIsBulletDestroyed = true;//init to destroyed
         }
 
         public override void Update(float deltaTime)
         {
             base.Update(deltaTime);
         }
-
-        /*
-        //check if bullet is onscreen
-        public override bool isOnscreen(int inScreenWidth, int inScreenHeight)
+        public void undestroyBullet()
         {
-
-            //if its within the width of the screen
-            if (xPosition < inScreenWidth && xPosition > 0)
-            {
-                if (yPosition < inScreenHeight && yPosition > 0)
-                {
-                    //Console.WriteLine("Bullet onscreen");
-                    return true;
-                }
-                else
-                {
-                    //Console.WriteLine("Bullet offscreen");
-                    this.SetPosition(-100.0f, -100.0f);
-                    return false;
-                }
-            }
-            //Console.WriteLine("Bullet offscreen");
-            return false;
+            //Console.WriteLine("undestroying bullet");
+            mIsBulletDestroyed = false;
         }
-        */
+        public void destroyBullet()
+        {
+            //Console.WriteLine("destroying bullet");
+            mIsBulletDestroyed = true;
+        }
+
+        public bool isDestroyed()
+        {
+            return mIsBulletDestroyed;
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            //if the bullet isn't destroyed
+            if (mIsBulletDestroyed == false)
+            {
+                base.Draw(spriteBatch);
+            }
+        }
+
     }
 }

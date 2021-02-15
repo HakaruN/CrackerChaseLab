@@ -13,11 +13,11 @@ namespace CrackerChase
     {
         //The song that will make up the background music
         Song mBackgroundMusic;
-
+        float mMasterVolume;
 
         public SoundManager(ContentManager cont)
         {
-      
+            mMasterVolume = 0.5f;
         }
         public void playSound(SoundEffect sound)
         {
@@ -34,9 +34,10 @@ namespace CrackerChase
         {
 
         }
-        public void setVolume(int vol)
+        public void setVolume(float vol)
         {
-
+            SoundEffect.MasterVolume = vol;
+            
         }
 
 

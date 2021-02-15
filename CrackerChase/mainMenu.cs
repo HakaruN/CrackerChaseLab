@@ -21,7 +21,7 @@ namespace CrackerChase
 
             mPressStartPos = new Vector2();
         }
-        public void update(float deltaTime, KeyboardState keys, SceneManager sceneManager, SoundManager soundManager, int inScreenWidth, int inScreenHeight)
+        public void update(float deltaTime, KeyboardState keys, SceneManager sceneManager, SoundManager soundManager, int inScreenWidth, int inScreenHeight,ref CrossSceneData data)
         {
             //if we have endured the required amount of time, transition to next scene
             if(keys.IsKeyDown(Keys.Enter))
@@ -35,10 +35,8 @@ namespace CrackerChase
 
         public void draw(SpriteBatch spriteBatch)
         {
-            //spriteBatch.Begin();
             mSplashImage.Draw(spriteBatch);//draw the splash screen
             spriteBatch.DrawString(mMessageFont, mMessageString, mPressStartPos, Color.Green);
-            //spriteBatch.End();
         }
 
 

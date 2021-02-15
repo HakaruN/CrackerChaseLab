@@ -22,15 +22,10 @@ namespace CrackerChase
             mSplashImage = splashImage;
             mScreenTime = screenTime;
             mEnduredScreenTime = 0;
-            Start();
         }
 
-        public void Start()
-        {
 
-        }
-
-        public void update(float deltaTime, KeyboardState keys, SceneManager sceneManager, SoundManager soundManager, int inScreenWidth, int inScreenHeight)
+        public void update(float deltaTime, KeyboardState keys, SceneManager sceneManager, SoundManager soundManager, int inScreenWidth, int inScreenHeight,ref CrossSceneData data)
         {
             //if we have endured the required amount of time, transition to next scene
             if(mEnduredScreenTime >= mScreenTime)

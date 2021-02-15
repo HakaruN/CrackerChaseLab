@@ -16,15 +16,14 @@ namespace CrackerChase
             mPlayer = player;
             mEnemies = enemies;
             mBarricades = barricades;
-            gameScore = 0;
-            numStepsPerRow = 450;
+            numStepsPerRow = 400;
             numStepsSoFar = 0;
             walkDir = true;
             mBackGround = backGroundSprite;
         }
 
 
-        public void update(float deltaTime, KeyboardState keys, SceneManager sceneManager, SoundManager soundManager, int inScreenWidth, int inScreenHeight)
+        public void update(float deltaTime, KeyboardState keys, SceneManager sceneManager, SoundManager soundManager, int inScreenWidth, int inScreenHeight,ref CrossSceneData data)
         {
             //call update method on the player
             mPlayer.Update(deltaTime, keys, inScreenWidth, inScreenHeight, soundManager);
@@ -58,14 +57,26 @@ namespace CrackerChase
                 }
             }
 
-            //update enemies logic
+            //enemy logic
             for (int i = 0; i < mEnemies.Count(); i++)
             {
+                //check for bullet intersection
                 mEnemies[i].Update(1.0f / 60.0f);
-                if (mPlayer.getBullet().IntersectsWith(mEnemies[i]))
+                if (mPlayer.getBullet().IntersectsWith(mEnemies[i]) && (!mPlayer.getBullet().isDestroyed() && mEnemies[i].mIsDead == false))
                 {
+
+                    mPlayer.getBullet().destroyBullet();
                     mEnemies[i].mIsDead = true;//destroy enemy
+                    data.score += 100;
                     //mPlayer.isOnScreen = false;
+                }
+
+                //check if the enemy is too close
+                if(mEnemies[i].GetPos().Y > inScreenHeight * 0.7f)
+                {
+                    Console.WriteLine("Game over");
+                    sceneManager.selectNextScene();
+                    return;
                 }
             }
 
@@ -74,6 +85,7 @@ namespace CrackerChase
             {
                 mBarricades[i].Update(deltaTime);
             }
+
 
             
         }
@@ -99,16 +111,11 @@ namespace CrackerChase
             }
         }
 
-        int gameScore;
         Player mPlayer;//player
         List<Enemy> mEnemies;//list of the aliens
         List<Barricade> mBarricades;
         Sprite mBackGround;
-        //enemy movement
         int numStepsSoFar, numStepsPerRow;
         bool walkDir;
-        //Enemy mEnemy;
-
-        //todo: add list of aliens, player object
     }
 }
