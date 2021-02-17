@@ -16,21 +16,18 @@ namespace CrackerChase
         /// </summary>
         /// <param name="splashImage"> image shown onscreen during the splash screen</param>
         /// <param name="screenTime"> how long the splash screen will apear for before ending, default 2 seconds</param>
-
         public SplashScreen(Sprite splashImage, int screenTime = 2)
         {
             mSplashImage = splashImage;
             mScreenTime = screenTime;
             mEnduredScreenTime = 0;
         }
-
-
-        public void update(float deltaTime, KeyboardState keys, SceneManager sceneManager, SoundManager soundManager, int inScreenWidth, int inScreenHeight,ref CrossSceneData data)
+        public void update(float deltaTime, KeyboardState keys, SceneManager sceneManager, SoundManager soundManager, int inScreenWidth, int inScreenHeight, ref CrossSceneData data)
         {
             //if we have endured the required amount of time, transition to next scene
             if(mEnduredScreenTime >= mScreenTime)
             {
-                sceneManager.selectNextScene();
+                sceneManager.selectNextScene(deltaTime, keys, sceneManager, soundManager, inScreenWidth, inScreenHeight, ref data);
             }
             mEnduredScreenTime += (deltaTime);//increment the endured splash time
         }
@@ -40,7 +37,10 @@ namespace CrackerChase
             mSplashImage.Draw(spriteBatch);//draw the splash screen
         }
 
+        public void onSwitchTo(float deltaTime, KeyboardState keys, SceneManager sceneManager, SoundManager soundManager, int inScreenWidth, int inScreenHeight, ref CrossSceneData data)
+        {
 
+        }
 
         Sprite mSplashImage;//image shown onscreen during the splash screen
         int mScreenTime;//how long will the splash screen be onscreen for

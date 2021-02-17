@@ -8,6 +8,7 @@ namespace CrackerChase
     {
 
         protected Texture2D mTexture;
+        protected string mTexName;
         protected ContentStore mContentStore;
         public Texture2D getTexture() { return mTexture; }
         protected Rectangle mRectangle;
@@ -20,7 +21,7 @@ namespace CrackerChase
             //assign and load content
             mContentStore = content;
             mTexture = mContentStore.getTexture(texName);
-
+            mTexName = texName;
             //cal aspect ratio and dimensions
             //float aspect = mTexture.Width / mTexture.Height;
             //int height = (int)Math.Round(inDrawWidth * aspect);

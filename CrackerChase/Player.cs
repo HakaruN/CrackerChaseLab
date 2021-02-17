@@ -15,7 +15,6 @@ namespace CrackerChase
         //bullet
         Bullet mBullet;
 
-        //bullet properties (TODO: abstract bullet to own class)
         bool bHasFired = false;
         public bool isBulletOnScreen = false;
 

@@ -12,8 +12,6 @@ namespace CrackerChase
 {
     class MainMenu : GameScene
     {
-
-
         public MainMenu(Sprite splashImage, SpriteFont messageFont)
         {
             mMessageFont = messageFont;//font used to display text
@@ -26,7 +24,7 @@ namespace CrackerChase
             //if we have endured the required amount of time, transition to next scene
             if(keys.IsKeyDown(Keys.Enter))
             {
-                sceneManager.selectNextScene();
+                sceneManager.selectNextScene(deltaTime, keys, sceneManager, soundManager, inScreenWidth, inScreenHeight, ref data);
             }
 
             mPressStartPos.X = (inScreenWidth - mMessageFont.MeasureString(mMessageString).X) / 2;
@@ -38,8 +36,12 @@ namespace CrackerChase
             mSplashImage.Draw(spriteBatch);//draw the splash screen
             spriteBatch.DrawString(mMessageFont, mMessageString, mPressStartPos, Color.Green);
         }
-
-
+        public void onSwitchTo(float deltaTime, KeyboardState keys, SceneManager sceneManager, SoundManager soundManager, int inScreenWidth, int inScreenHeight, ref CrossSceneData data)
+        {
+            //when switching back to the main menue, reset health and score
+            data.score = 0;
+            data.health = 0;
+        }
         //members
         Sprite mSplashImage;//image shown onscreen during the splash screen
         string mMessageString = "Press enter to play";

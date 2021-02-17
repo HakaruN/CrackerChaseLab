@@ -58,17 +58,19 @@ namespace CrackerChase
         {
             mScenes.Remove(mScenes[ID]);
         }
-        public void selectNextScene()
+        public void selectNextScene(float deltaTime, KeyboardState keys, SceneManager sceneManager, SoundManager soundManager, int inScreenWidth, int inScreenHeight, ref CrossSceneData data)
         {
             mCurrentScene++;
+            mScenes[mCurrentScene].onSwitchTo(deltaTime, keys, sceneManager, soundManager, inScreenWidth, inScreenHeight, ref data);
         }
         public void selectPrevScene()
         {
             mCurrentScene--;
         }
-        public void selectSceneByID(int ID)
+        public void selectSceneByID(int ID, float deltaTime, KeyboardState keys, SceneManager sceneManager, SoundManager soundManager, int inScreenWidth, int inScreenHeight, ref CrossSceneData data)
         {
             mCurrentScene = ID;
+            mScenes[mCurrentScene].onSwitchTo(deltaTime, keys, sceneManager, soundManager, inScreenWidth, inScreenHeight, ref data);
         }
 
         //manages updates, draws etc

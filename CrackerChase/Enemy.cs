@@ -5,6 +5,8 @@ using Microsoft.Xna.Framework.Audio;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
+
 namespace CrackerChase
 {
     class Enemy : Mover
@@ -17,6 +19,11 @@ namespace CrackerChase
             : base(content, texName, defaultXPos, defaultYPos, inDefaultXSpeed, inDefaultYSpeed, spriteWidth, spriteHeight)
         {
             mIsDead = false;
+        }
+
+        static public void enemyToXML()
+        {
+
         }
 
         

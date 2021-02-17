@@ -13,5 +13,8 @@ namespace CrackerChase
     {
         void update(float deltaTime, KeyboardState keys, SceneManager sceneManager, SoundManager soundManager, int inScreenWidth, int inScreenHeight,ref CrossSceneData data);
         void draw(SpriteBatch spriteBatch);
+
+        //the onSwitchTo function allows a scene to be initialised before updateing and drawing begins therefore it brings in all data that may be needed to do some initial drawing or updating
+        void onSwitchTo(float deltaTime, KeyboardState keys, SceneManager sceneManager, SoundManager soundManager, int inScreenWidth, int inScreenHeight, ref CrossSceneData data);
     }
 }

@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Input;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace CrackerChase
 {
@@ -75,7 +76,7 @@ namespace CrackerChase
                 if(mEnemies[i].GetPos().Y > inScreenHeight * 0.7f)
                 {
                     Console.WriteLine("Game over");
-                    sceneManager.selectNextScene();
+                    sceneManager.selectNextScene(deltaTime, keys, sceneManager, soundManager, inScreenWidth, inScreenHeight, ref data);
                     return;
                 }
             }
@@ -111,9 +112,20 @@ namespace CrackerChase
             }
         }
 
-        Player mPlayer;//player
-        List<Enemy> mEnemies;//list of the aliens
+        public void onSwitchTo(float deltaTime, KeyboardState keys, SceneManager sceneManager, SoundManager soundManager, int inScreenWidth, int inScreenHeight, ref CrossSceneData data)
+        {
+            //load the game:
+            //load enemies
+        }
+
+        //store of entities, not manipulated
+        Player mPlayer;//player initial state
+        List<Enemy> mEnemies;//list of the aliens 
         List<Barricade> mBarricades;
+
+
+
+
         Sprite mBackGround;
         int numStepsSoFar, numStepsPerRow;
         bool walkDir;
